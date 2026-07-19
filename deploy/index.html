@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="description" content="ADW LIVE — A different world, brought to life. Immersive festivals, culture takeovers and live experiences from Las Vegas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #07070c; }
+  body { font-family: 'Archivo', system-ui, sans-serif; color: #f5f4fa; -webkit-font-smoothing: antialiased; }
+  a { color: #FE019A; text-decoration: none; }
+  a:hover { color: #ff4fc0; }
+  ::selection { background: #FE019A; color: #fff; }
+  @keyframes adw-marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  @keyframes adw-gradshift { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
+  @keyframes adw-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+  @keyframes adw-pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(254,1,154,.55); } 50% { box-shadow: 0 0 34px 6px rgba(254,1,154,.55); } }
+  @keyframes adw-scrollhint { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(14px); opacity: 0; } }
+  #adw-worlds-track::-webkit-scrollbar { display: none; }
+</style>
+</helmet>
+<div style="position:relative; overflow-x:hidden; background:#07070c;">
+
+  <!-- ===== NAV ===== -->
+  <header style="position:fixed; top:0; left:0; right:0; z-index:100; opacity:{{ navOpacity }}; transform:{{ navTransform }}; transition:opacity .4s ease, transform .4s ease;">
+    <sc-if value="{{ showAnnouncement }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex; align-items:center; justify-content:center; gap:14px; padding:8px 34px; background:linear-gradient(90deg,#FE019A,#6914D1,#1ea7ff); background-size:200% auto; animation:adw-gradshift 8s linear infinite;">
+        <span style="font-size:11.5px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:#fff;">🎟 {{ announcementText }}</span>
+        <a href="tickets.html" style="font-size:11.5px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; color:#fff; border-bottom:1.5px solid rgba(255,255,255,.7);" style-hover="opacity:.85;">{{ ctaLabel }} →</a>
+      </div>
+    </sc-if>
+    <div style="padding:{{ navOuterPad }}; transition:padding .35s ease;">
+      <div style="max-width:{{ navMaxWidth }}; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:20px; padding:10px 12px 10px 22px; border-radius:{{ navRadius }}; background:{{ navBg }}; border:{{ navBorder }}; box-shadow:{{ navShadow }}; backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); transition:all .35s ease;">
+        <a href="#top" style="display:flex; align-items:baseline; gap:2px; font-family:'Anton',sans-serif; font-size:24px; letter-spacing:1px; line-height:1; text-decoration:none;">
+          <span style="background:linear-gradient(90deg,#FE019A,#6914D1,#1ea7ff); -webkit-background-clip:text; background-clip:text; color:transparent;">ADW</span>
+          <span style="color:#fff; margin-left:7px;">LIVE</span>
+          <span style="color:#39ff88; font-size:11px; margin-left:2px; align-self:flex-start;">™</span>
+        </a>
+        <nav style="display:flex; align-items:center; gap:4px;" class="adw-desknav">
+          <a href="#worlds" style="padding:9px 15px; border-radius:999px; color:#cfccdb; font-size:12.5px; font-weight:600; letter-spacing:.8px; text-transform:uppercase; transition:all .2s ease;" style-hover="color:#fff; background:rgba(255,255,255,.08);">Events</a>
+          <a href="#haunted" style="padding:9px 15px; border-radius:999px; color:#cfccdb; font-size:12.5px; font-weight:600; letter-spacing:.8px; text-transform:uppercase; transition:all .2s ease;" style-hover="color:#fff; background:rgba(255,255,255,.08);">Haunted</a>
+          <a href="vendors.html" style="padding:9px 15px; border-radius:999px; color:#cfccdb; font-size:12.5px; font-weight:600; letter-spacing:.8px; text-transform:uppercase; transition:all .2s ease;" style-hover="color:#fff; background:rgba(255,255,255,.08);">Vendors</a>
+          <a href="sponsors.html" style="padding:9px 15px; border-radius:999px; color:#cfccdb; font-size:12.5px; font-weight:600; letter-spacing:.8px; text-transform:uppercase; transition:all .2s ease;" style-hover="color:#fff; background:rgba(255,255,255,.08);">Partners</a>
+          <a href="#about" style="padding:9px 15px; border-radius:999px; color:#cfccdb; font-size:12.5px; font-weight:600; letter-spacing:.8px; text-transform:uppercase; transition:all .2s ease;" style-hover="color:#fff; background:rgba(255,255,255,.08);">About</a>
+          <a href="#signup" style="padding:9px 15px; border-radius:999px; color:#cfccdb; font-size:12.5px; font-weight:600; letter-spacing:.8px; text-transform:uppercase; transition:all .2s ease;" style-hover="color:#fff; background:rgba(255,255,255,.08);">Contact</a>
+        </nav>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <a href="tickets.html" class="adw-desknav" style="display:inline-block; padding:11px 22px; border-radius:999px; font-size:12.5px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#fff; background:linear-gradient(90deg,#FE019A,#6914D1); box-shadow:0 8px 24px rgba(254,1,154,.35);" style-hover="filter:brightness(1.12); transform:translateY(-1px);">{{ ctaLabel }}</a>
+          <button onClick="{{ toggleMenu }}" aria-label="Menu" style="display:none; background:none; border:0; cursor:pointer; padding:6px;" class="adw-burger">
+            <span style="display:block; width:24px; height:2px; background:#fff; margin:5px 0;"></span>
+            <span style="display:block; width:24px; height:2px; background:#fff; margin:5px 0;"></span>
+            <span style="display:block; width:24px; height:2px; background:#fff; margin:5px 0;"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- mobile menu -->
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed; inset:0; z-index:99; background:rgba(7,7,12,.97); backdrop-filter:blur(8px); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:22px;">
+      <a href="#worlds" onClick="{{ closeMenu }}" style="color:#fff; font-family:'Anton',sans-serif; font-size:32px; letter-spacing:1px;">EVENTS</a>
+      <a href="#haunted" onClick="{{ closeMenu }}" style="color:#fff; font-family:'Anton',sans-serif; font-size:32px; letter-spacing:1px;">HAUNTED</a>
+      <a href="vendors.html" onClick="{{ closeMenu }}" style="color:#fff; font-family:'Anton',sans-serif; font-size:32px; letter-spacing:1px;">VENDORS</a>
+      <a href="sponsors.html" onClick="{{ closeMenu }}" style="color:#fff; font-family:'Anton',sans-serif; font-size:32px; letter-spacing:1px;">PARTNERS</a>
+      <a href="#about" onClick="{{ closeMenu }}" style="color:#fff; font-family:'Anton',sans-serif; font-size:32px; letter-spacing:1px;">ABOUT</a>
+      <a href="#signup" onClick="{{ closeMenu }}" style="color:#fff; font-family:'Anton',sans-serif; font-size:32px; letter-spacing:1px;">CONTACT</a>
+      <a href="tickets.html" onClick="{{ closeMenu }}" style="margin-top:12px; padding:14px 34px; border-radius:999px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; color:#fff; background:linear-gradient(90deg,#FE019A,#6914D1);">Get Tickets</a>
+    </div>
+  </sc-if>
+
+  <!-- ===== HERO ===== -->
+  <section id="top" style="position:relative; min-height:100vh; display:flex; flex-direction:column; justify-content:flex-end; padding:0 34px 68px; overflow:hidden;">
+    <div style="position:absolute; inset:0; background-image:url('assets/hero.jpg'); background-size:cover; background-position:center; z-index:0;"></div>
+    <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(7,7,12,.55) 0%, rgba(7,7,12,.15) 38%, rgba(7,7,12,.82) 86%, #07070c 100%); z-index:1;"></div>
+    <div style="position:absolute; inset:0; background:linear-gradient(115deg, rgba(105,20,209,.32), rgba(254,1,154,.10) 45%, rgba(30,167,255,.20)); mix-blend-mode:screen; z-index:1;"></div>
+    <div style="position:relative; z-index:2; max-width:1100px; margin:0 auto; width:100%;">
+      <div data-reveal style="display:inline-flex; align-items:center; gap:9px; padding:8px 16px; border:1px solid rgba(57,255,136,.5); border-radius:999px; margin-bottom:26px; background:rgba(57,255,136,.08);">
+        <span style="width:8px; height:8px; border-radius:50%; background:#39ff88; box-shadow:0 0 10px #39ff88;"></span>
+        <span style="font-size:11.5px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#eafff2;">Now Playing · Las Vegas</span>
+      </div>
+      <h1 data-reveal style="font-family:'Anton',sans-serif; font-weight:400; font-size:clamp(48px,9vw,132px); line-height:.92; margin:0 0 22px; letter-spacing:0.5px; text-transform:uppercase; text-shadow:0 6px 40px rgba(0,0,0,.5);">
+        A Different World,<br><span style="background:linear-gradient(90deg,#FE019A,#ff7a1a,#39ff88,#1ea7ff,#FE019A); background-size:200% auto; -webkit-background-clip:text; background-clip:text; color:transparent; animation:adw-gradshift 6s linear infinite;">Brought To Life.</span>
+      </h1>
+      <p data-reveal style="font-size:clamp(17px,2.2vw,24px); font-weight:600; color:#dcd9e8; margin:0 0 34px; letter-spacing:.4px;">Live festivals. Immersive worlds. Culture takeovers.</p>
+      <div data-reveal style="display:flex; flex-wrap:wrap; gap:14px; margin-bottom:52px;">
+        <a href="#worlds" style="padding:16px 34px; border-radius:999px; font-size:14px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; color:#fff; background:linear-gradient(90deg,#FE019A,#6914D1); box-shadow:0 12px 34px rgba(254,1,154,.4);" style-hover="filter:brightness(1.12); transform:translateY(-2px);">Explore Events</a>
+        <a href="tickets.html" style="padding:16px 34px; border-radius:999px; font-size:14px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; color:#fff; background:rgba(255,255,255,.08); border:1.5px solid rgba(255,255,255,.4); backdrop-filter:blur(6px);" style-hover="background:rgba(255,255,255,.16); transform:translateY(-2px);">Get Tickets</a>
+      </div>
+      <!-- countdown -->
+      <div data-reveal class="adw-countdown" style="display:flex; width:fit-content; flex-wrap:wrap; align-items:stretch; gap:2px; padding:2px; border-radius:16px; background:linear-gradient(90deg,rgba(254,1,154,.4),rgba(105,20,209,.4),rgba(30,167,255,.4)); backdrop-filter:blur(4px); max-width:100%;">
+        <div style="display:flex; flex-direction:column; justify-content:center; padding:14px 20px; background:rgba(7,7,12,.72); border-radius:14px 0 0 14px;">
+          <span style="font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#39ff88;">Haunted Takeover</span>
+          <span style="font-size:12.5px; font-weight:600; color:#cfccdb;">Oct 24, 2026 · Henderson, NV</span>
+        </div>
+        <div style="display:flex; align-items:center; flex-wrap:wrap; justify-content:center; gap:14px; padding:14px 24px; background:rgba(7,7,12,.72); border-radius:0 14px 14px 0;">
+          <div style="text-align:center; min-width:52px;"><div style="font-family:'Anton',sans-serif; font-size:34px; line-height:1; color:#fff;">{{ cd.days }}</div><div style="font-size:9.5px; letter-spacing:1.5px; text-transform:uppercase; color:#8f8ba0;">Days</div></div>
+          <div style="text-align:center; min-width:52px;"><div style="font-family:'Anton',sans-serif; font-size:34px; line-height:1; color:#fff;">{{ cd.hours }}</div><div style="font-size:9.5px; letter-spacing:1.5px; text-transform:uppercase; color:#8f8ba0;">Hrs</div></div>
+          <div style="text-align:center; min-width:52px;"><div style="font-family:'Anton',sans-serif; font-size:34px; line-height:1; color:#fff;">{{ cd.mins }}</div><div style="font-size:9.5px; letter-spacing:1.5px; text-transform:uppercase; color:#8f8ba0;">Min</div></div>
+          <div style="text-align:center; min-width:52px;"><div style="font-family:'Anton',sans-serif; font-size:34px; line-height:1; background:linear-gradient(90deg,#FE019A,#1ea7ff); -webkit-background-clip:text; background-clip:text; color:transparent;">{{ cd.secs }}</div><div style="font-size:9.5px; letter-spacing:1.5px; text-transform:uppercase; color:#8f8ba0;">Sec</div></div>
+        </div>
+      </div>
+    </div>
+    <div style="position:absolute; bottom:26px; left:50%; transform:translateX(-50%); z-index:2; width:22px; height:36px; border:2px solid rgba(255,255,255,.4); border-radius:14px; display:flex; justify-content:center; padding-top:7px;">
+      <span style="width:3px; height:8px; border-radius:2px; background:#fff; animation:adw-scrollhint 1.4s ease-in-out infinite;"></span>
+    </div>
+  </section>
+
+  <!-- ===== MARQUEE ===== -->
+  <div style="overflow:hidden; white-space:nowrap; padding:16px 0; background:linear-gradient(90deg,#FE019A,#6914D1); border-top:1px solid rgba(255,255,255,.1); border-bottom:1px solid rgba(255,255,255,.1);">
+    <div style="display:inline-flex; gap:38px; animation:adw-marquee 22s linear infinite; will-change:transform;">
+      <span style="font-family:'Anton',sans-serif; font-size:20px; letter-spacing:2px; color:#fff;">LIVE FESTIVALS ✦ IMMERSIVE WORLDS ✦ CULTURE TAKEOVERS ✦ LAS VEGAS ✦ LIVE FESTIVALS ✦ IMMERSIVE WORLDS ✦ CULTURE TAKEOVERS ✦ LAS VEGAS ✦&nbsp;</span>
+      <span style="font-family:'Anton',sans-serif; font-size:20px; letter-spacing:2px; color:#fff;">LIVE FESTIVALS ✦ IMMERSIVE WORLDS ✦ CULTURE TAKEOVERS ✦ LAS VEGAS ✦ LIVE FESTIVALS ✦ IMMERSIVE WORLDS ✦ CULTURE TAKEOVERS ✦ LAS VEGAS ✦&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- ===== EVENT WORLDS ===== -->
+  <section id="worlds" style="padding:100px 34px; max-width:1300px; margin:0 auto;">
+    <div data-reveal style="text-align:center; margin-bottom:56px;">
+      <div style="display:flex; align-items:center; justify-content:center; gap:14px; margin-bottom:10px;">
+        <span style="font-family:'Anton',sans-serif; font-size:15px; letter-spacing:2px; color:#FE019A;">01</span>
+        <span style="width:44px; height:1px; background:linear-gradient(90deg,transparent,#FE019A,transparent);"></span>
+        <span style="font-size:12px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#FE019A;">Event Worlds</span>
+      </div>
+      <h2 style="font-family:'Anton',sans-serif; font-weight:400; font-size:clamp(34px,5.5vw,66px); line-height:1; margin:0 0 12px; text-transform:uppercase; letter-spacing:.5px;">Four Worlds. One Energy.</h2>
+      <p style="font-size:15.5px; color:#b0adbf; max-width:560px; margin:0 auto;">One brand, four seasons of the year reimagined as living, breathing event worlds. Pick your season.</p>
+    </div>
+    <div style="display:flex; justify-content:flex-end; gap:10px; margin-bottom:20px;">
+      <button onClick="{{ worldsPrev }}" aria-label="Previous" style="width:46px; height:46px; border-radius:50%; cursor:pointer; color:#fff; font-size:22px; line-height:1; background:rgba(255,255,255,.06); border:1.5px solid rgba(255,255,255,.22);" style-hover="background:rgba(255,255,255,.16);">‹</button>
+      <button onClick="{{ worldsNext }}" aria-label="Next" style="width:46px; height:46px; border-radius:50%; cursor:pointer; color:#fff; font-size:22px; line-height:1; background:linear-gradient(90deg,#FE019A,#6914D1); border:0;" style-hover="filter:brightness(1.14);">›</button>
+    </div>
+    <div id="adw-worlds-track" style="display:flex; gap:22px; overflow-x:auto; scroll-snap-type:x mandatory; padding:4px 4px 14px; scrollbar-width:none; -ms-overflow-style:none;">
+
+      <article data-reveal style="flex:0 0 clamp(280px,82vw,360px); scroll-snap-align:start; position:relative; border-radius:22px; overflow:hidden; border:1px solid rgba(255,255,255,.08); background:#0e0e16; transition:transform .35s ease, box-shadow .35s ease;" style-hover="transform:translateY(-8px); box-shadow:0 24px 60px rgba(254,1,154,.28);">
+        <div style="position:relative; height:300px; background-image:url('assets/haunted.jpg'); background-size:cover; background-position:center;">
+          <div style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(14,14,22,0) 40%,#0e0e16);"></div>
+          <span style="position:absolute; top:16px; left:16px; padding:6px 13px; border-radius:999px; font-size:10.5px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; color:#fff; background:linear-gradient(90deg,#ff7a1a,#FE019A);">Featured</span>
+          <span style="position:absolute; top:16px; right:16px; display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px; font-size:10.5px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#fff; background:rgba(7,7,12,.66); border:1px solid rgba(255,122,26,.6); backdrop-filter:blur(4px);"><span style="width:7px; height:7px; border-radius:50%; background:#ff7a1a; box-shadow:0 0 8px #ff7a1a;"></span>Selling Fast</span>
+        </div>
+        <div style="padding:26px 26px 30px;">
+          <h3 style="font-family:'Anton',sans-serif; font-weight:400; font-size:30px; margin:0 0 10px; text-transform:uppercase; letter-spacing:.5px;">Haunted Takeover™</h3>
+          <p style="font-size:14.5px; line-height:1.55; color:#b9b6c8; margin:0 0 22px;">A bold Halloween world of costumes, music, food, competitions, immersive scare zones, vendors, and pure nightlife energy.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:10px;">
+            <a href="#haunted" style="flex:1; text-align:center; padding:12px 16px; border-radius:999px; font-size:12.5px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#fff; border:1.5px solid rgba(255,255,255,.28);" style-hover="background:rgba(255,255,255,.1);">Learn More</a>
+            <a href="tickets.html" style="flex:1; text-align:center; padding:12px 16px; border-radius:999px; font-size:12.5px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#fff; background:linear-gradient(90deg,#FE019A,#6914D1);" style-hover="filter:brightness(1.12);">Get Tickets</a>
+          </div>
+        </div>
+      </article>
+
+      <article data-reveal style="flex:0 0 clamp(280px,82vw,360px); scroll-snap-align:start; position:relative; border-radius:22px; overflow:hidden; border:1px solid rgba(255,255,255,.08); background:#0e0e16; transition:transform .35s ease, box-shadow .35s ease;" style-hover="transform:translateY(-8px); box-shadow:0 24px 60px rgba(30,167,255,.28);">
+        <div style="position:relative; height:300px; background-image:url('assets/spring.jpg'); background-size:cover; background-position:center;">
+          <div style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(14,14,22,0) 40%,#0e0e16);"></div>
+          <span style="position:absolute; top:16px; left:16px; padding:6px 12px; border-radius:999px; font-size:10.5px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#fff; background:rgba(7,7,12,.66); border:1px solid rgba(30,167,255,.5); backdrop-filter:blur(4px);">Waitlist Open</span>
+        </div>
+        <div style="padding:26px 26px 30px;">
+          <h3 style="font-family:'Anton',sans-serif; font-weight:400; font-size:30px; margin:0 0 10px; text-transform:uppercase; letter-spacing:.5px;">Spring Takeover</h3>
+          <p style="font-size:14.5px; line-height:1.55; color:#b9b6c8; margin:0 0 22px;">A fresh open-air festival world — live music, art, food, culture, creators, and color-drenched daytime energy.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:10px;">
+            <a href="#worlds" style="flex:1; text-align:center; padding:12px 16px; border-radius:999px; font-size:12.5px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#fff; border:1.5px solid rgba(255,255,255,.28);" style-hover="background:rgba(255,255,255,.1);">Learn More</a>
+            <a href="#signup" style="flex:1; text-align:center; padding:12px 16px; border-radius:999px; font-size:12.5px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#fff; background:linear-gradient(90deg,#1ea7ff,#6914D1);" style-hover="filter:brightness(1.12);">Join Waitlist</a>
+          </div>
+        </div>
+      </article>
+
+      <article data-reveal style="flex:0 0 clamp(280px,82vw,360px); scroll-snap-align:start; position:relative; border-radius:22px; overflow:hidden; border:1px solid rgba(255,255,255,.08); background:#0e0e16; transition:transform .35s ease, box-shadow .35s ease;" style-hover="transform:translateY(-8px); box-shadow:0 24px 60px rgba(105,20,209,.28);">
+        <div style="position:relative; height:300px; background-image:url('assets/summer.jpg'); background-size:cover; background-position:center;">
+          <div style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(14,14,22,0) 40%,#0e0e16);"></div>
+          <span style="position:absolute; top:16px; left:16px; padding:6px 12px; border-radius:999px; font-size:10.5px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#fff; background:rgba(7,7,12,.66); border:1px solid rgba(105,20,209,.5); backdrop-filter:blur(4px);">Waitlist Open</span>
+        </div>
+        <div style="padding:26px 26px 30px;">
+          <h3 style="font-family:'Anton',sans-serif; font-weight:400; font-size:30px; margin:0 0 10px; text-transform:uppercase; letter-spacing:.5px;">Summer Takeover</h3>
+          <p style="font-size:14.5px; line-height:1.55; color:#b9b6c8; margin:0 0 22px;">A vibrant summer festival world — live music, food, culture, creators, colorful experiences and high-energy entertainment.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:10px;">
+            <a href="#worlds" style="flex:1; text-align:center; padding:12px 16px; border-radius:999px; font-size:12.5px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#fff; border:1.5px solid rgba(255,255,255,.28);" style-hover="background:rgba(255,255,255,.1);">Learn More</a>
+            <a href="#signup" style="flex:1; text-align:center; padding:12px 16px; border-radius:999px; font-size:12.5px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#fff; background:linear-gradient(90deg,#39ff88,#6914D1); color:#fff;" style-hover="filter:brightness(1.12);">Join Waitlist</a>
+          </div>
+        </div>
+      </article>
+
+      <article data-reveal style="flex:0 0 clamp(280px,82vw,360px); scroll-snap-align:start; position:relative; border-radius:22px; overflow:hidden; border:1px solid rgba(255,255,255,.08); background:#0e0e16; transition:transform .35s ease, box-shadow .35s ease;" style-hover="transform:translateY(-8px); box-shadow:0 24px 60px rgba(57,255,136,.26);">
+        <div style="position:relative; height:300px; background-image:url('assets/winter.jpg'); background-size:cover; background-position:center;">
+          <div style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(14,14,22,0) 40%,#0e0e16);"></div>
+          <span style="position:absolute; top:16px; left:16px; padding:6px 12px; border-radius:999px; font-size:10.5px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#fff; background:rgba(7,7,12,.66); border:1px solid rgba(57,255,136,.5); backdrop-filter:blur(4px);">Dec 12 · Waitlist</span>
+        </div>
+        <div style="padding:26px 26px 30px;">
+          <h3 style="font-family:'Anton',sans-serif; font-weight:400; font-size:30px; margin:0 0 6px; text-transform:uppercase; letter-spacing:.5px;">Winter Takeover</h3>
+          <div style="font-size:11.5px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#1ea7ff; margin:0 0 12px;">December 12, 2026 · Galleria at Sunset</div>
+          <p style="font-size:14.5px; line-height:1.55; color:#b9b6c8; margin:0 0 22px;">A festive winter celebration — holiday lights, live music, shopping, food, photo moments, and community cheer.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:10px;">
+            <a href="#worlds" style="flex:1; text-align:center; padding:12px 16px; border-radius:999px; font-size:12.5px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#fff; border:1.5px solid rgba(255,255,255,.28);" style-hover="background:rgba(255,255,255,.1);">Learn More</a>
+            <a href="#signup" style="flex:1; text-align:center; padding:12px 16px; border-radius:999px; font-size:12.5px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#fff; background:linear-gradient(90deg,#39ff88,#1ea7ff); color:#062a16;" style-hover="filter:brightness(1.08);">Join Waitlist</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== LIVE SOCIAL PROOF TICKER ===== -->
+  <section style="padding:8px 34px 40px;">
+    <div data-reveal style="max-width:1300px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:14px 40px; padding:22px 30px; border-radius:20px; border:1px solid rgba(255,255,255,.08); background:linear-gradient(120deg,rgba(254,1,154,.08),rgba(105,20,209,.06),rgba(30,167,255,.08));">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <span style="width:9px; height:9px; border-radius:50%; background:#39ff88; box-shadow:0 0 10px #39ff88; animation:adw-pulse 2s ease-in-out infinite;"></span>
+        <span style="font-size:13px; font-weight:800; color:#fff;"><span id="adw-live-viewers" style="font-family:'Anton',sans-serif; font-size:19px; color:#39ff88;">142</span> viewing right now</span>
+      </div>
+      <div style="width:1px; height:24px; background:rgba(255,255,255,.14);" class="adw-tickdiv"></div>
+      <div style="font-size:13px; font-weight:800; color:#fff;"><span id="adw-tickets-sold" style="font-family:'Anton',sans-serif; font-size:19px; background:linear-gradient(90deg,#FE019A,#1ea7ff); -webkit-background-clip:text; background-clip:text; color:transparent;">2,847</span> tickets claimed</div>
+      <div style="width:1px; height:24px; background:rgba(255,255,255,.14);" class="adw-tickdiv"></div>
+      <div style="font-size:13px; font-weight:800; color:#fff;"><span style="font-family:'Anton',sans-serif; font-size:19px; color:#ff7a1a;">80%</span> of early-bird gone</div>
+      <div style="width:1px; height:24px; background:rgba(255,255,255,.14);" class="adw-tickdiv"></div>
+      <a href="tickets.html" style="font-size:12px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; color:#fff; padding:10px 20px; border-radius:999px; background:linear-gradient(90deg,#FE019A,#6914D1); box-shadow:0 8px 22px rgba(254,1,154,.35);" style-hover="filter:brightness(1.12);">Claim Yours</a>
+    </div>
+  </section>
+
+  <!-- ===== WHAT ADW LIVE CREATES ===== -->
+  <section style="padding:70px 34px 100px; max-width:1300px; margin:0 auto;">
+    <div data-reveal style="max-width:720px; margin-bottom:48px;">
+      <div style="display:flex; align-items:center; gap:14px; margin-bottom:10px;">
+        <span style="font-family:'Anton',sans-serif; font-size:15px; letter-spacing:2px; color:#1ea7ff;">02</span>
+        <span style="width:44px; height:1px; background:linear-gradient(90deg,#1ea7ff,transparent);"></span>
+        <span style="font-size:12px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#1ea7ff;">What We Create</span>
+      </div>
+      <h2 style="font-family:'Anton',sans-serif; font-weight:400; font-size:clamp(30px,4.5vw,52px); line-height:1.02; margin:14px 0 16px; text-transform:uppercase;">Event Worlds Where Everyone Belongs</h2>
+      <p style="font-size:16px; line-height:1.6; color:#b9b6c8; margin:0;">ADW LIVE builds event worlds where audiences, businesses, creators, and brands come together through unforgettable shared experiences.</p>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px;">
+      <div data-reveal style="position:relative; overflow:hidden; padding:30px 26px; border-radius:18px; background:linear-gradient(160deg,rgba(254,1,154,.14),rgba(255,255,255,.02)); border:1px solid rgba(254,1,154,.28);">
+        <span style="position:absolute; top:6px; right:16px; font-family:'Anton',sans-serif; font-size:64px; line-height:1; color:rgba(254,1,154,.16);">01</span>
+        <div style="width:44px; height:44px; border-radius:12px; background:#FE019A; margin-bottom:18px; box-shadow:0 0 22px rgba(254,1,154,.6);"></div>
+        <h4 style="font-size:18px; font-weight:800; margin:0 0 8px;">Live Experiences</h4>
+        <p style="font-size:13.5px; line-height:1.55; color:#b0adbf; margin:0;">Festivals and live events engineered for energy, music, and unforgettable nights.</p>
+      </div>
+      <div data-reveal style="position:relative; overflow:hidden; padding:30px 26px; border-radius:18px; background:linear-gradient(160deg,rgba(105,20,209,.16),rgba(255,255,255,.02)); border:1px solid rgba(105,20,209,.34);">
+        <span style="position:absolute; top:6px; right:16px; font-family:'Anton',sans-serif; font-size:64px; line-height:1; color:rgba(105,20,209,.2);">02</span>
+        <div style="width:44px; height:44px; border-radius:12px; background:#6914D1; margin-bottom:18px; box-shadow:0 0 22px rgba(105,20,209,.6);"></div>
+        <h4 style="font-size:18px; font-weight:800; margin:0 0 8px;">Immersive Worlds</h4>
+        <p style="font-size:13.5px; line-height:1.55; color:#b0adbf; margin:0;">Themed environments you don't watch — you step inside and explore.</p>
+      </div>
+      <div data-reveal style="position:relative; overflow:hidden; padding:30px 26px; border-radius:18px; background:linear-gradient(160deg,rgba(30,167,255,.14),rgba(255,255,255,.02)); border:1px solid rgba(30,167,255,.3);">
+        <span style="position:absolute; top:6px; right:16px; font-family:'Anton',sans-serif; font-size:64px; line-height:1; color:rgba(30,167,255,.18);">03</span>
+        <div style="width:44px; height:44px; border-radius:12px; background:#1ea7ff; margin-bottom:18px; box-shadow:0 0 22px rgba(30,167,255,.6);"></div>
+        <h4 style="font-size:18px; font-weight:800; margin:0 0 8px;">Brand Activations</h4>
+        <p style="font-size:13.5px; line-height:1.55; color:#b0adbf; margin:0;">Branded zones and activations that turn attention into real engagement.</p>
+      </div>
+      <div data-reveal style="position:relative; overflow:hidden; padding:30px 26px; border-radius:18px; background:linear-gradient(160deg,rgba(57,255,136,.13),rgba(255,255,255,.02)); border:1px solid rgba(57,255,136,.3);">
+        <span style="position:absolute; top:6px; right:16px; font-family:'Anton',sans-serif; font-size:64px; line-height:1; color:rgba(57,255,136,.16);">04</span>
+        <div style="width:44px; height:44px; border-radius:12px; background:#39ff88; margin-bottom:18px; box-shadow:0 0 22px rgba(57,255,136,.5);"></div>
+        <h4 style="font-size:18px; font-weight:800; margin:0 0 8px;">Community Connection</h4>
+        <p style="font-size:13.5px; line-height:1.55; color:#b0adbf; margin:0;">Shared moments that bring people, creators and neighborhoods together.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FEATURED EVENT ===== -->
+  <section id="haunted" style="position:relative; padding:100px 34px; overflow:hidden; background:#07070c;">
+    <div style="position:absolute; top:-140px; right:-100px; width:620px; height:620px; border-radius:50%; background:radial-gradient(circle,rgba(255,122,26,.16),transparent 68%); z-index:0;"></div>
+    <div style="position:absolute; bottom:-160px; left:-120px; width:640px; height:640px; border-radius:50%; background:radial-gradient(circle,rgba(105,20,209,.2),transparent 70%); z-index:0;"></div>
+    <div style="position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent); z-index:1;"></div>
+
+    <div style="position:relative; z-index:2; max-width:1240px; margin:0 auto; display:grid; grid-template-columns:1fr 1.05fr; gap:54px; align-items:center;" class="adw-featgrid">
+
+      <!-- POSTER -->
+      <div data-reveal style="position:relative; padding:3px; border-radius:26px; background:linear-gradient(150deg,#ff7a1a,#FE019A 45%,#6914D1); box-shadow:0 30px 80px rgba(105,20,209,.35), 0 0 60px rgba(254,1,154,.2);">
+        <div style="position:relative; border-radius:24px; overflow:hidden; aspect-ratio:4/5;">
+          <div style="position:absolute; inset:0; background-image:url('assets/haunted.jpg'); background-size:cover; background-position:center;"></div>
+          <div style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(7,7,12,.5) 0%,transparent 32%,transparent 55%,rgba(7,7,12,.92) 100%);"></div>
+          <div style="position:absolute; top:22px; left:22px; right:22px; display:flex; align-items:center; justify-content:space-between;">
+            <span style="font-size:10.5px; font-weight:800; letter-spacing:2.5px; text-transform:uppercase; color:#fff; opacity:.9;">ADW LIVE™ Presents</span>
+            <span style="display:inline-flex; align-items:center; gap:7px; padding:6px 12px; border-radius:999px; font-size:10px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#fff; background:rgba(7,7,12,.6); border:1px solid rgba(255,122,26,.6); backdrop-filter:blur(4px);"><span style="width:7px; height:7px; border-radius:50%; background:#ff7a1a; box-shadow:0 0 8px #ff7a1a;"></span>Selling Fast</span>
+          </div>
+          <div style="position:absolute; left:26px; right:26px; bottom:26px;">
+            <div style="font-family:'Anton',sans-serif; font-size:clamp(30px,4.6vw,50px); line-height:.9; text-transform:uppercase; color:#fff;">Haunted<br>Takeover™</div>
+            <div style="margin-top:12px; font-size:12.5px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#ffcda3;">Oct 24, 2026 · Henderson, NV</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DETAILS -->
+      <div>
+        <div data-reveal style="display:flex; align-items:center; gap:14px; margin-bottom:20px;">
+          <span style="font-size:12px; font-weight:800; letter-spacing:3px; text-transform:uppercase; color:#ff7a1a;">The Main Event</span>
+          <span style="flex:1; height:1px; background:linear-gradient(90deg,#ff7a1a,transparent);"></span>
+        </div>
+        <h2 data-reveal style="font-family:'Anton',sans-serif; font-weight:400; font-size:clamp(46px,7vw,96px); line-height:.86; margin:0 0 14px; text-transform:uppercase;">
+          <span style="color:#fff;">Haunted</span><br><span style="background:linear-gradient(90deg,#ff7a1a,#FE019A); -webkit-background-clip:text; background-clip:text; color:transparent;">Takeover™</span>
+        </h2>
+        <p data-reveal style="font-family:'Anton',sans-serif; font-size:clamp(18px,2.4vw,26px); letter-spacing:1px; margin:0 0 26px; color:#f5f4fa; text-transform:uppercase;">The Night Belongs To The Bold.</p>
+        <p data-reveal style="font-size:15.5px; line-height:1.65; color:#c4c1d2; margin:0 0 30px; max-width:520px;">Seven hours of costumes, live DJs, cash-prize competitions, scare zones, food trucks and photo experiences — the biggest Halloween world in Las Vegas.</p>
+
+        <!-- countdown -->
+        <div data-reveal style="margin-bottom:28px;">
+          <div style="font-size:10.5px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#8f8ba0; margin-bottom:12px;">Doors Open In</div>
+          <div style="display:flex; gap:12px;">
+            <div style="flex:1; text-align:center; padding:14px 8px; border-radius:14px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1);"><div style="font-family:'Anton',sans-serif; font-size:clamp(26px,4vw,38px); line-height:1; color:#fff;">{{ cd.days }}</div><div style="font-size:9.5px; letter-spacing:1.5px; text-transform:uppercase; color:#8f8ba0; margin-top:5px;">Days</div></div>
+            <div style="flex:1; text-align:center; padding:14px 8px; border-radius:14px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1);"><div style="font-family:'Anton',sans-serif; font-size:clamp(26px,4vw,38px); line-height:1; color:#fff;">{{ cd.hours }}</div><div style="font-size:9.5px; letter-spacing:1.5px; text-transform:uppercase; color:#8f8ba0; margin-top:5px;">Hrs</div></div>
+            <div style="flex:1; text-align:center; padding:14px 8px; border-radius:14px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1);"><div style="font-family:'Anton',sans-serif; font-size:clamp(26px,4vw,38px); line-height:1; color:#fff;">{{ cd.mins }}</div><div style="font-size:9.5px; letter-spacing:1.5px; text-transform:uppercase; color:#8f8ba0; margin-top:5px;">Min</div></div>
+            <div style="flex:1; text-align:center; padding:14px 8px; border-radius:14px; background:linear-gradient(135deg,rgba(255,122,26,.22),rgba(254,1,154,.22)); border:1px solid rgba(255,122,26,.4);"><div style="font-family:'Anton',sans-serif; font-size:clamp(26px,4vw,38px); line-height:1; color:#fff;">{{ cd.secs }}</div><div style="font-size:9.5px; letter-spacing:1.5px; text-transform:uppercase; color:#ffcda3; margin-top:5px;">Sec</div></div>
+          </div>
+        </div>
+
+        <!-- detail row -->
+        <div data-reveal style="display:flex; flex-wrap:wrap; gap:26px; margin-bottom:30px; padding:20px 0; border-top:1px solid rgba(255,255,255,.1); border-bottom:1px solid rgba(255,255,255,.1);">
+          <div><div style="font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:#8f8ba0; margin-bottom:5px;">When</div><div style="font-size:15px; font-weight:700; color:#fff;">Oct 24 · 4–11 PM</div></div>
+          <div><div style="font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:#8f8ba0; margin-bottom:5px;">Where</div><div style="font-size:15px; font-weight:700; color:#fff;">Galleria at Sunset</div></div>
+          <div><div style="font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:#8f8ba0; margin-bottom:5px;">Tickets From</div><div style="font-size:15px; font-weight:700; color:#ff9d4d;">$35</div></div>
+        </div>
+
+        <div data-reveal style="display:flex; flex-wrap:wrap; gap:14px; align-items:center;">
+          <a href="tickets.html" style="padding:17px 42px; border-radius:999px; font-size:14px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; color:#fff; background:linear-gradient(90deg,#ff7a1a,#FE019A); box-shadow:0 16px 40px rgba(254,1,154,.4);" style-hover="filter:brightness(1.1); transform:translateY(-2px);">Buy Tickets</a>
+          <a href="vendors.html" style="padding:17px 32px; border-radius:999px; font-size:14px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; color:#fff; background:rgba(255,255,255,.06); border:1.5px solid rgba(255,255,255,.3);" style-hover="background:rgba(255,255,255,.14);">Become a Vendor</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXPERIENCE HIGHLIGHTS ===== -->
+  <section style="padding:64px 34px; max-width:1300px; margin:0 auto;">
+    <div data-reveal style="text-align:center; margin-bottom:34px;">
+      <span style="font-size:12px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#ff7a1a;">Inside the Takeover</span>
+      <h2 style="font-family:'Anton',sans-serif; font-weight:400; font-size:clamp(28px,4.5vw,52px); line-height:1; margin:12px 0 0; text-transform:uppercase;">Everything Happening in One Night</h2>
+    </div>
+    <div data-reveal style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px;">
+      <span style="padding:12px 20px; border-radius:999px; font-size:13.5px; font-weight:700; color:#fff; border:1px solid rgba(254,1,154,.4); background:rgba(254,1,154,.08);">Costume Competition</span>
+      <span style="padding:12px 20px; border-radius:999px; font-size:13.5px; font-weight:700; color:#fff; border:1px solid rgba(105,20,209,.4); background:rgba(105,20,209,.1);">Makeup Artist Comp</span>
+      <span style="padding:12px 20px; border-radius:999px; font-size:13.5px; font-weight:700; color:#fff; border:1px solid rgba(30,167,255,.4); background:rgba(30,167,255,.08);">Food Trucks</span>
+      <span style="padding:12px 20px; border-radius:999px; font-size:13.5px; font-weight:700; color:#fff; border:1px solid rgba(57,255,136,.4); background:rgba(57,255,136,.08);">Live DJs</span>
+      <span style="padding:12px 20px; border-radius:999px; font-size:13.5px; font-weight:700; color:#fff; border:1px solid rgba(255,122,26,.4); background:rgba(255,122,26,.09);">Scare Zones</span>
+      <span style="padding:12px 20px; border-radius:999px; font-size:13.5px; font-weight:700; color:#fff; border:1px solid rgba(254,1,154,.4); background:rgba(254,1,154,.08);">Photo Experiences</span>
+      <span style="padding:12px 20px; border-radius:999px; font-size:13.5px; font-weight:700; color:#fff; border:1px solid rgba(105,20,209,.4); background:rgba(105,20,209,.1);">Vendor Market</span>
+      <span style="padding:12px 20px; border-radius:999px; font-size:13.5px; font-weight:700; color:#fff; border:1px solid rgba(30,167,255,.4); background:rgba(30,167,255,.08);">21+ Lounge</span>
+      <span style="padding:12px 20px; border-radius:999px; font-size:13.5px; font-weight:700; color:#fff; border:1px solid rgba(57,255,136,.4); background:rgba(57,255,136,.08);">Cash Prizes</span>
+    </div>
+  </section>
+
+  <!-- ===== AUDIENCE EXPERIENCE ===== -->
+  <section style="position:relative; padding:110px 34px; text-align:center; overflow:hidden;">
+    <div style="position:absolute; inset:0; background-image:url('assets/summer.jpg'); background-size:cover; background-position:center; z-index:0;"></div>
+    <div style="position:absolute; inset:0; background:linear-gradient(180deg,rgba(7,7,12,.86),rgba(7,7,12,.78)); z-index:1;"></div>
+    <div data-reveal style="position:relative; z-index:2; max-width:940px; margin:0 auto;">
+      <div style="display:flex; align-items:center; justify-content:center; gap:14px; margin-bottom:16px;">
+        <span style="font-family:'Anton',sans-serif; font-size:15px; letter-spacing:2px; color:#39ff88;">03</span>
+        <span style="width:44px; height:1px; background:linear-gradient(90deg,transparent,#39ff88,transparent);"></span>
+        <span style="font-size:12px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#39ff88;">The Feeling</span>
+      </div>
+      <h2 style="font-family:'Anton',sans-serif; font-weight:400; font-size:clamp(34px,6vw,72px); line-height:.98; margin:0 0 22px; text-transform:uppercase;">More Than an Event.<br><span style="background:linear-gradient(90deg,#1ea7ff,#39ff88,#FE019A); background-size:200% auto; -webkit-background-clip:text; background-clip:text; color:transparent; animation:adw-gradshift 7s linear infinite;">A World You Enter.</span></h2>
+      <p style="font-size:clamp(16px,2vw,20px); line-height:1.6; color:#d3d0e0; margin:0 auto 44px; max-width:680px;">Every ADW LIVE experience is designed to create energy, connection, discovery, and moments people want to share.</p>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:20px; max-width:820px; margin:0 auto;">
+        <div><div style="font-family:'Anton',sans-serif; font-size:clamp(38px,5vw,58px); line-height:1; background:linear-gradient(90deg,#FE019A,#1ea7ff); -webkit-background-clip:text; background-clip:text; color:transparent;">5,000+</div><div style="font-size:12px; letter-spacing:1.2px; text-transform:uppercase; color:#8f8ba0; margin-top:8px;">Guests per world</div></div>
+        <div><div style="font-family:'Anton',sans-serif; font-size:clamp(38px,5vw,58px); line-height:1; background:linear-gradient(90deg,#39ff88,#1ea7ff); -webkit-background-clip:text; background-clip:text; color:transparent;">7 hrs</div><div style="font-size:12px; letter-spacing:1.2px; text-transform:uppercase; color:#8f8ba0; margin-top:8px;">Of nonstop energy</div></div>
+        <div><div style="font-family:'Anton',sans-serif; font-size:clamp(38px,5vw,58px); line-height:1; background:linear-gradient(90deg,#ff7a1a,#FE019A); -webkit-background-clip:text; background-clip:text; color:transparent;">100+</div><div style="font-size:12px; letter-spacing:1.2px; text-transform:uppercase; color:#8f8ba0; margin-top:8px;">Vendors &amp; creators</div></div>
+        <div><div style="font-family:'Anton',sans-serif; font-size:clamp(38px,5vw,58px); line-height:1; background:linear-gradient(90deg,#b98bff,#1ea7ff); -webkit-background-clip:text; background-clip:text; color:transparent;">1</div><div style="font-size:12px; letter-spacing:1.2px; text-transform:uppercase; color:#8f8ba0; margin-top:8px;">Night you won't forget</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY ===== -->
+  <section style="padding:100px 34px; max-width:1300px; margin:0 auto;">
+    <div data-reveal style="display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:16px; margin-bottom:40px;">
+      <div>
+        <div style="display:flex; align-items:center; gap:14px; margin-bottom:10px;">
+          <span style="font-family:'Anton',sans-serif; font-size:15px; letter-spacing:2px; color:#1ea7ff;">04</span>
+          <span style="width:44px; height:1px; background:linear-gradient(90deg,#1ea7ff,transparent);"></span>
+          <span style="font-size:12px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#1ea7ff;">The Moments</span>
+        </div>
+        <h2 style="font-family:'Anton',sans-serif; font-weight:400; font-size:clamp(30px,5vw,60px); line-height:1; margin:0; text-transform:uppercase;">Straight From the Floor</h2>
+      </div>
+      <a href="https://instagram.com/adwliveofficial" target="_blank" rel="noopener" style="font-size:12.5px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#cfccdb; border-bottom:1.5px solid rgba(255,255,255,.3); padding-bottom:3px;" style-hover="color:#fff;">Follow on Instagram →</a>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); grid-auto-rows:180px; gap:12px;">
+      <div data-reveal style="grid-column:span 2; grid-row:span 2; border-radius:16px; background-image:url('assets/hero.jpg'); background-size:cover; background-position:center; border:1px solid rgba(255,255,255,.08);"></div>
+      <div data-reveal style="border-radius:16px; background-image:url('assets/haunted.jpg'); background-size:cover; background-position:center; border:1px solid rgba(255,255,255,.08);"></div>
+      <div data-reveal style="border-radius:16px; background-image:url('assets/summer.jpg'); background-size:cover; background-position:center; border:1px solid rgba(255,255,255,.08);"></div>
+      <div data-reveal style="border-radius:16px; background-image:url('assets/moments-crowd.jpg'); background-size:cover; background-position:center; border:1px solid rgba(255,255,255,.08);"></div>
+      <div data-reveal style="border-radius:16px; background-image:url('assets/moments-costumes.jpg'); background-size:cover; background-position:center; border:1px solid rgba(255,255,255,.08);"></div>
+    </div>
+  </section>
+
+  <!-- ===== VENDOR + BRAND ===== -->
+  <section style="padding:20px 34px 60px; max-width:1300px; margin:0 auto;">
+    <div data-reveal style="text-align:center;">
+      <div style="display:flex; align-items:center; justify-content:center; gap:14px; margin-bottom:10px;">
+        <span style="font-family:'Anton',sans-serif; font-size:15px; letter-spacing:2px; color:#39ff88;">05</span>
+        <span style="width:44px; height:1px; background:linear-gradient(90deg,transparent,#39ff88,transparent);"></span>
+        <span style="font-size:12px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#39ff88;">Get Involved</span>
+      </div>
+      <h2 style="font-family:'Anton',sans-serif; font-weight:400; font-size:clamp(30px,5vw,58px); line-height:1; margin:0; text-transform:uppercase;">Be Part of the World.</h2>
+    </div>
+  </section>
+  <section style="padding:0 34px 100px; max-width:1300px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:22px;">
+    <div id="vendors" data-reveal style="position:relative; overflow:hidden; padding:48px 40px; border-radius:24px; border:1px solid rgba(57,255,136,.28); background:linear-gradient(155deg,rgba(57,255,136,.12),rgba(30,167,255,.08),rgba(255,255,255,.02));">
+      <span style="font-size:11.5px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:#39ff88;">Vendors</span>
+      <h3 style="font-family:'Anton',sans-serif; font-weight:400; font-size:clamp(28px,4vw,42px); line-height:1; margin:14px 0 16px; text-transform:uppercase;">Bring Your Business Into the Experience.</h3>
+      <p style="font-size:15px; line-height:1.6; color:#c4c1d2; margin:0 0 28px;">Reach new customers, showcase your brand, and become part of one of Las Vegas' most exciting experiential event platforms.</p>
+      <a href="vendors.html" style="display:inline-block; padding:15px 32px; border-radius:999px; font-size:13.5px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; color:#062a16; background:linear-gradient(90deg,#39ff88,#1ea7ff);" style-hover="filter:brightness(1.08); transform:translateY(-2px);">Become a Vendor</a>
+    </div>
+    <div id="partners" data-reveal style="position:relative; overflow:hidden; padding:48px 40px; border-radius:24px; border:1px solid rgba(254,1,154,.28); background:linear-gradient(155deg,rgba(254,1,154,.14),rgba(105,20,209,.12),rgba(255,255,255,.02));">
+      <span style="font-size:11.5px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:#FE019A;">Brand Partnerships</span>
+      <h3 style="font-family:'Anton',sans-serif; font-weight:400; font-size:clamp(28px,4vw,42px); line-height:1; margin:14px 0 16px; text-transform:uppercase;">Turn Attention Into Real Brand Engagement.</h3>
+      <p style="font-size:15px; line-height:1.6; color:#c4c1d2; margin:0 0 28px;">ADW LIVE works with brands to create memorable activations, branded environments, audience engagement, lead generation, and cultural relevance.</p>
+      <a href="sponsors.html" style="display:inline-block; padding:15px 32px; border-radius:999px; font-size:13.5px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; color:#fff; background:linear-gradient(90deg,#FE019A,#6914D1);" style-hover="filter:brightness(1.12); transform:translateY(-2px);">Explore Brand Partnerships</a>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" data-reveal style="padding:20px 34px 90px; max-width:900px; margin:0 auto; text-align:center;">
+    <span style="font-size:12px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#6914D1;">About ADW LIVE</span>
+    <p style="font-size:clamp(18px,2.4vw,26px); line-height:1.5; font-weight:600; color:#e7e5f0; margin:18px 0 0;">Built in Las Vegas and designed to expand world by world, <span style="color:#FE019A;">ADW LIVE</span> blends live entertainment, culture, food, commerce, and community into experiences audiences remember.</p>
+  </section>
+
+  <!-- ===== PULSE / CULTURE PLATFORM COMING SOON ===== -->
+  <section style="position:relative; padding:100px 34px; overflow:hidden;">
+    <div style="position:absolute; inset:0; background:linear-gradient(125deg,#1a0a2e,#07070c 52%,#2a0716); z-index:0;"></div>
+    <div style="position:absolute; top:-160px; right:-80px; width:560px; height:560px; border-radius:50%; background:radial-gradient(circle,rgba(105,20,209,.34),transparent 68%); filter:blur(16px); z-index:0;"></div>
+    <div style="position:absolute; bottom:-180px; left:-60px; width:520px; height:520px; border-radius:50%; background:radial-gradient(circle,rgba(254,1,154,.24),transparent 70%); filter:blur(18px); z-index:0;"></div>
+    <div data-reveal style="position:relative; z-index:1; max-width:900px; margin:0 auto; text-align:center;">
+      <span style="display:inline-block; padding:8px 18px; border:1px solid rgba(57,255,136,.5); border-radius:999px; font-size:11.5px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:#eafff2; background:rgba(57,255,136,.08); margin-bottom:26px;">Coming Soon</span>
+      <div style="display:flex; align-items:center; justify-content:center; gap:14px; margin-bottom:8px;">
+        <svg width="42" height="42" viewBox="0 0 60 24" fill="none" stroke="url(#pulseg)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><defs><linearGradient id="pulseg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FE019A"/><stop offset="1" stop-color="#1ea7ff"/></linearGradient></defs><polyline points="0,12 10,12 16,3 24,21 32,7 38,17 44,12 60,12"/></svg>
+        <span style="font-family:'Anton',sans-serif; font-size:clamp(40px,7vw,72px); letter-spacing:2px; text-transform:uppercase; background:linear-gradient(90deg,#FE019A,#6914D1,#1ea7ff); -webkit-background-clip:text; background-clip:text; color:transparent;">PULSE™</span>
+      </div>
+      <h2 style="font-family:'Anton',sans-serif; font-weight:400; font-size:clamp(26px,4vw,44px); line-height:1.04; margin:0 0 18px; text-transform:uppercase;">The Culture Platform That<br>Brings It All To Life.</h2>
+      <p style="font-size:clamp(16px,2vw,19px); line-height:1.6; color:#cfccdb; margin:0 auto 36px; max-width:640px;">One app for everything happening around you — your AI guide to live events, food, nightlife, crews, and rewards. Discover. Connect. Experience culture.</p>
+      <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-bottom:44px;">
+        <span style="padding:11px 20px; border-radius:999px; font-size:13px; font-weight:700; color:#fff; border:1px solid rgba(254,1,154,.4); background:rgba(254,1,154,.08);">Real-Time Recommendations</span>
+        <span style="padding:11px 20px; border-radius:999px; font-size:13px; font-weight:700; color:#fff; border:1px solid rgba(105,20,209,.4); background:rgba(105,20,209,.1);">Live Event Updates</span>
+        <span style="padding:11px 20px; border-radius:999px; font-size:13px; font-weight:700; color:#fff; border:1px solid rgba(30,167,255,.4); background:rgba(30,167,255,.08);">Find People &amp; Crews</span>
+        <span style="padding:11px 20px; border-radius:999px; font-size:13px; font-weight:700; color:#fff; border:1px solid rgba(57,255,136,.4); background:rgba(57,255,136,.08);">Culture Passport &amp; Rewards</span>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:14px;">
+        <a href="#signup" style="padding:16px 36px; border-radius:999px; font-size:14px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; color:#fff; background:linear-gradient(90deg,#FE019A,#6914D1); box-shadow:0 14px 36px rgba(254,1,154,.4);" style-hover="filter:brightness(1.12); transform:translateY(-2px);">Get Early Access</a>
+        <span style="font-size:13px; letter-spacing:1px; text-transform:uppercase; color:#8f8ba0;">Join the waitlist below ↓</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SPONSOR STRIP ===== -->
+  <section style="padding:36px 34px; border-top:1px solid rgba(255,255,255,.07); border-bottom:1px solid rgba(255,255,255,.07); background:#0a0a11;">
+    <p style="text-align:center; font-size:11px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:#6b6880; margin:0 0 22px;">Trusted by Brands & Partners Across Las Vegas</p>
+    <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:44px;">
+      <span style="font-family:'Anton',sans-serif; font-size:22px; letter-spacing:1px; color:#4a4860;">NEONWORKS</span>
+      <span style="font-family:'Anton',sans-serif; font-size:22px; letter-spacing:1px; color:#4a4860;">VEGAS CO.</span>
+      <span style="font-family:'Anton',sans-serif; font-size:22px; letter-spacing:1px; color:#4a4860;">PULSE MEDIA</span>
+      <span style="font-family:'Anton',sans-serif; font-size:22px; letter-spacing:1px; color:#4a4860;">SUNSET GALLERIA</span>
+      <span style="font-family:'Anton',sans-serif; font-size:22px; letter-spacing:1px; color:#4a4860;">RIOT SOUND</span>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section style="padding:20px 34px 90px; max-width:840px; margin:0 auto;">
+    <div data-reveal style="text-align:center; margin-bottom:40px;">
+      <span style="font-size:12px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#39ff88;">Good to Know</span>
+      <h2 style="font-family:'Anton',sans-serif; font-weight:400; font-size:clamp(30px,5vw,58px); line-height:1; margin:12px 0 0; text-transform:uppercase;">Frequently Asked</h2>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:12px;">
+      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="5">
+        <div data-reveal style="border:1px solid rgba(255,255,255,.1); border-radius:14px; overflow:hidden; background:#0e0e16;">
+          <button onClick="{{ f.toggle }}" style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:18px; padding:20px 24px; background:none; border:0; cursor:pointer; text-align:left; color:#fff; font-family:'Archivo',sans-serif; font-size:16px; font-weight:700;">
+            <span>{{ f.q }}</span>
+            <span style="flex-shrink:0; font-family:'Anton',sans-serif; font-size:24px; line-height:1; color:#FE019A;">{{ f.sign }}</span>
+          </button>
+          <div style="overflow:hidden; transition:max-height .4s ease; max-height:{{ f.max }};">
+            <p style="padding:0 24px 22px; margin:0; font-size:14.5px; line-height:1.6; color:#b0adbf;">{{ f.a }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ===== SIGNUP ===== -->
+  <section id="signup" style="position:relative; padding:100px 34px; overflow:hidden;">
+    <div style="position:absolute; inset:0; background:linear-gradient(120deg,#150a26,#07070c 55%,#1a0616); z-index:0;"></div>
+    <div style="position:absolute; top:-120px; left:50%; transform:translateX(-50%); width:680px; height:680px; border-radius:50%; background:radial-gradient(circle, rgba(254,1,154,.22), transparent 70%); z-index:0; filter:blur(20px);"></div>
+    <div data-reveal style="position:relative; z-index:2; max-width:680px; margin:0 auto; text-align:center;">
+      <div data-reveal style="display:inline-flex; align-items:center; gap:9px; padding:8px 16px; border:1px solid rgba(57,255,136,.5); border-radius:999px; margin-bottom:22px; background:rgba(57,255,136,.08);">
+        <span style="width:8px; height:8px; border-radius:50%; background:#39ff88; box-shadow:0 0 10px #39ff88; animation:adw-pulse 2s ease-in-out infinite;"></span>
+        <span style="font-size:12px; font-weight:800; letter-spacing:.5px; color:#eafff2;"><span id="adw-culture-count" style="font-family:'Anton',sans-serif; font-size:16px; color:#39ff88;">18,450</span> people living culture right now</span>
+      </div>
+      <h2 style="font-family:'Anton',sans-serif; font-weight:400; font-size:clamp(34px,6vw,66px); line-height:1; margin:0 0 16px; text-transform:uppercase;">Be First Into Every World.</h2>
+      <p style="font-size:16px; line-height:1.6; color:#c4c1d2; margin:0 0 34px;">Get ticket drops, event announcements, giveaways, vendor opportunities, and exclusive updates.</p>
+      <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+        <div style="padding:34px; border-radius:18px; border:1px solid rgba(57,255,136,.4); background:rgba(57,255,136,.08);">
+          <div style="font-family:'Anton',sans-serif; font-size:26px; color:#39ff88;">You're In.</div>
+          <p style="color:#c4c1d2; margin:8px 0 0;">Welcome to ADW LIVE. Watch your inbox for the next drop.</p>
+        </div>
+      </sc-if>
+      <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ submitForm }}" class="adw-signup" style="display:grid; gap:12px; grid-template-columns:1fr 1fr; text-align:left;">
+          <input required placeholder="First name" style="grid-column:span 1; padding:15px 18px; border-radius:12px; border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.05); color:#fff; font-size:15px; font-family:'Archivo',sans-serif;">
+          <input required type="tel" placeholder="Mobile number" style="grid-column:span 1; padding:15px 18px; border-radius:12px; border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.05); color:#fff; font-size:15px; font-family:'Archivo',sans-serif;">
+          <input required type="email" placeholder="Email address" style="grid-column:span 2; padding:15px 18px; border-radius:12px; border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.05); color:#fff; font-size:15px; font-family:'Archivo',sans-serif;">
+          <button type="submit" style="grid-column:span 2; padding:16px; border-radius:12px; border:0; cursor:pointer; font-size:14px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; color:#fff; background:linear-gradient(90deg,#FE019A,#6914D1); animation:adw-pulse 2.6s ease-in-out infinite;">Join ADW LIVE</button>
+        </form>
+        <p style="font-size:11px; color:#6b6880; margin:14px 0 0;">By joining you agree to receive email & SMS updates. Reply STOP to opt out anytime.</p>
+      </sc-if>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer style="padding:56px 34px 120px; border-top:1px solid rgba(255,255,255,.07); background:#08080d;">
+    <div style="max-width:1300px; margin:0 auto; display:flex; flex-wrap:wrap; justify-content:space-between; gap:30px;">
+      <div style="max-width:320px;">
+        <div style="display:flex; align-items:baseline; font-family:'Anton',sans-serif; font-size:26px; letter-spacing:1px;">
+          <span style="background:linear-gradient(90deg,#FE019A,#6914D1,#1ea7ff); -webkit-background-clip:text; background-clip:text; color:transparent;">ADW</span>
+          <span style="color:#fff; margin-left:7px;">LIVE</span>
+          <span style="color:#39ff88; font-size:12px; margin-left:2px;">™</span>
+        </div>
+        <p style="font-size:13.5px; line-height:1.6; color:#8f8ba0; margin:14px 0 0;">A different world, brought to life. Immersive event worlds from Las Vegas, expanding world by world.</p>
+      </div>
+      <div style="display:flex; gap:56px; flex-wrap:wrap;">
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <span style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#6b6880;">Events</span>
+          <a href="#haunted" style="font-size:13.5px; color:#cfccdb;">Haunted Takeover</a>
+          <a href="#worlds" style="font-size:13.5px; color:#cfccdb;">Spring Takeover</a>
+          <a href="#worlds" style="font-size:13.5px; color:#cfccdb;">Summer Takeover</a>
+          <a href="#worlds" style="font-size:13.5px; color:#cfccdb;">Winter Takeover</a>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <span style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#6b6880;">Company</span>
+          <a href="vendors.html" style="font-size:13.5px; color:#cfccdb;">Vendors</a>
+          <a href="sponsors.html" style="font-size:13.5px; color:#cfccdb;">Brand Partners</a>
+          <a href="#about" style="font-size:13.5px; color:#cfccdb;">About</a>
+          <a href="#signup" style="font-size:13.5px; color:#cfccdb;">Contact</a>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <span style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#6b6880;">Get In Touch</span>
+          <a href="mailto:hello@adwlive.com" style="font-size:13.5px; color:#cfccdb;">hello@adwlive.com</a>
+          <a href="tel:+17025550100" style="font-size:13.5px; color:#cfccdb;">(702) 555-0100</a>
+          <span style="font-size:13.5px; color:#8f8ba0;">Las Vegas, Nevada</span>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <span style="font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#6b6880;">Follow</span>
+          <a href="https://instagram.com/adwliveofficial" target="_blank" rel="noopener" style="font-size:13.5px; color:#cfccdb;">Instagram</a>
+          <a href="https://tiktok.com/@adwliveofficial" target="_blank" rel="noopener" style="font-size:13.5px; color:#cfccdb;">TikTok</a>
+          <a href="#" style="font-size:13.5px; color:#cfccdb;">Facebook</a>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:1300px; margin:44px auto 0; font-size:11.5px; color:#54526a;">© 2026 ADW LIVE™. All rights reserved. Las Vegas, Nevada.</p>
+  </footer>
+
+  <!-- ===== STICKY MOBILE BAR ===== -->
+  <a href="tickets.html" class="adw-stickybar" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:120; padding:16px; text-align:center; font-size:14px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; color:#fff; background:linear-gradient(90deg,#FE019A,#6914D1); box-shadow:0 -6px 24px rgba(0,0,0,.5);">🎟 Get Tickets · Haunted Takeover</a>
+
+  <style>
+    @media (max-width: 900px) {
+      .adw-desknav { display: none !important; }
+      .adw-burger { display: block !important; }
+      .adw-stickybar { display: block !important; }
+    }
+    @media (max-width: 860px) {
+      .adw-featgrid { grid-template-columns: 1fr !important; gap: 34px !important; }
+    }
+    @media (max-width: 700px) {
+      .adw-tickdiv { display: none !important; }
+    }
+    @media (max-width: 560px) {
+      .adw-signup { grid-template-columns: 1fr !important; }
+      .adw-countdown { flex-direction: column; width: 100%; }
+      .adw-countdown > div { border-radius: 12px !important; }
+    }
+  </style>
+</div>
+
+<template id="__bundler_thumbnail">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FE019A"/><stop offset="0.5" stop-color="#6914D1"/><stop offset="1" stop-color="#1ea7ff"/>
+    </linearGradient></defs>
+    <rect width="512" height="512" fill="#07070c"/>
+    <rect x="56" y="56" width="400" height="400" rx="48" fill="url(#g)"/>
+    <text x="256" y="290" font-family="Arial Black, sans-serif" font-weight="900" font-size="150" fill="#fff" text-anchor="middle">ADW</text>
+  </svg>
+</template></x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;floatingNav&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Navigation&quot; },
+  &quot;showAnnouncementBar&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Navigation&quot; },
+  &quot;announcementText&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;Haunted Takeover™ · Oct 24 · Early-bird tickets on sale now&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Navigation&quot; },
+  &quot;ctaLabel&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;Get Tickets&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Navigation&quot; },
+  &quot;eventDate&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;2026-10-24T16:00:00-07:00&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Event&quot; }
+}">
+class Component extends DCLogic {
+  state = { cd: { days: '--', hours: '--', mins: '--', secs: '--' }, menuOpen: false, submitted: false, scrolled: false, navHidden: false, openFaq: 0 };
+
+  componentDidMount() {
+    this.target = new Date(this.props.eventDate ?? '2026-10-24T16:00:00-07:00').getTime();
+    this.tick();
+    this.timer = setInterval(() => this.tick(), 1000);
+
+    this.lastY = 0;
+    this.onScroll = () => {
+      const y = window.scrollY;
+      const s = y > 40;
+      const hidden = y > 240 && y > this.lastY + 4;
+      this.lastY = y;
+      if (s !== this.state.scrolled || hidden !== this.state.navHidden) this.setState({ scrolled: s, navHidden: hidden });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+
+    // Live social-proof counters (FOMO)
+    let viewers = 142, sold = 2847, culture = 18450;
+    this.liveTimer = setInterval(() => {
+      viewers = Math.max(96, Math.min(214, viewers + Math.round((Math.random() - 0.45) * 9)));
+      const vEl = document.getElementById('adw-live-viewers');
+      if (vEl) vEl.textContent = viewers;
+      if (Math.random() < 0.4) {
+        sold += Math.floor(Math.random() * 3) + 1;
+        const sEl = document.getElementById('adw-tickets-sold');
+        if (sEl) sEl.textContent = sold.toLocaleString('en-US');
+      }
+      culture = Math.max(18200, culture + Math.round((Math.random() - 0.35) * 24));
+      const cEl = document.getElementById('adw-culture-count');
+      if (cEl) cEl.textContent = culture.toLocaleString('en-US');
+    }, 2600);
+
+    this.io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'none';
+          this.io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    requestAnimationFrame(() => {
+      document.querySelectorAll('[data-reveal]').forEach((el, i) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(32px)';
+        el.style.transition = 'opacity .7s cubic-bezier(.2,.7,.2,1) ' + Math.min(i * 40, 240) + 'ms, transform .7s cubic-bezier(.2,.7,.2,1) ' + Math.min(i * 40, 240) + 'ms';
+        this.io.observe(el);
+      });
+    });
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
+    clearInterval(this.liveTimer);
+    window.removeEventListener('scroll', this.onScroll);
+    if (this.io) this.io.disconnect();
+  }
+
+  tick() {
+    const diff = this.target - Date.now();
+    if (diff <= 0) { this.setState({ cd: { days: '00', hours: '00', mins: '00', secs: '00' } }); return; }
+    const pad = (n) => String(n).padStart(2, '0');
+    this.setState({ cd: {
+      days: pad(Math.floor(diff / 86400000)),
+      hours: pad(Math.floor(diff / 3600000) % 24),
+      mins: pad(Math.floor(diff / 60000) % 60),
+      secs: pad(Math.floor(diff / 1000) % 60),
+    }});
+  }
+
+  renderVals() {
+    const floating = this.props.floatingNav ?? true;
+    const scrolled = this.state.scrolled;
+    let navBg, navBorder, navShadow;
+    if (floating) {
+      navBg = scrolled ? 'rgba(12,12,20,.85)' : 'rgba(12,12,20,.5)';
+      navBorder = '1px solid rgba(255,255,255,.1)';
+      navShadow = '0 14px 44px rgba(0,0,0,.45)';
+    } else {
+      navBg = scrolled ? 'rgba(7,7,12,.9)' : 'rgba(7,7,12,0)';
+      navBorder = scrolled ? '1px solid rgba(255,255,255,.06)' : '1px solid transparent';
+      navShadow = 'none';
+    }
+
+    const faqData = [
+      { q: 'What time does Haunted Takeover™ start?', a: 'Doors open October 24, 2026 from 4 PM to 11 PM at Galleria at Sunset in Henderson, Nevada — seven full hours of Las Vegas energy.' },
+      { q: 'Is there an age requirement?', a: 'The event is all-ages and family-friendly earlier in the evening. The 21+ Lounge requires a valid government-issued ID for entry.' },
+      { q: 'Are costumes required?', a: 'Costumes are strongly encouraged — enter the costume and makeup-artist competitions for cash prizes. Full-face masks may be briefly checked at entry for safety.' },
+      { q: 'Where do I buy tickets?', a: 'Right here on the site — hit any Get Tickets button to pick your passes and check out securely with Stripe. Early-bird pricing is limited and released in waves, so grab yours before the next drop.' },
+      { q: 'Can my business be a vendor?', a: 'Yes. Apply through our vendor page — space is limited and applications are reviewed on a rolling basis across food, retail, and activation categories.' },
+    ];
+    const faqs = faqData.map((it, i) => ({
+      q: it.q,
+      a: it.a,
+      sign: this.state.openFaq === i ? '–' : '+',
+      max: this.state.openFaq === i ? '260px' : '0px',
+      toggle: () => this.setState((s) => ({ openFaq: s.openFaq === i ? -1 : i })),
+    }));
+
+    return {
+      cd: this.state.cd,
+      menuOpen: this.state.menuOpen,
+      submitted: this.state.submitted,
+      notSubmitted: !this.state.submitted,
+      faqs,
+      showAnnouncement: this.props.showAnnouncementBar ?? true,
+      announcementText: this.props.announcementText ?? 'Haunted Takeover™ · Oct 24 · Early-bird tickets on sale now',
+      ctaLabel: this.props.ctaLabel ?? 'Get Tickets',
+      navBg, navBorder, navShadow,
+      navOpacity: this.state.navHidden ? '0' : '1',
+      navTransform: this.state.navHidden ? 'translateY(-100%)' : 'translateY(0)',
+      navOuterPad: floating ? '14px 20px 0' : '0px',
+      navMaxWidth: floating ? '1200px' : '100%',
+      navRadius: floating ? '20px' : '0px',
+      worldsPrev: () => { const t = document.getElementById('adw-worlds-track'); if (t) t.scrollBy({ left: -(t.querySelector('article')?.offsetWidth || 340) - 22, behavior: 'smooth' }); },
+      worldsNext: () => { const t = document.getElementById('adw-worlds-track'); if (t) t.scrollBy({ left: (t.querySelector('article')?.offsetWidth || 340) + 22, behavior: 'smooth' }); },
+      toggleMenu: () => this.setState((s) => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      submitForm: (e) => { e.preventDefault(); this.setState({ submitted: true }); },
+    };
+  }
+}
+</script>
+</body>
+</html>

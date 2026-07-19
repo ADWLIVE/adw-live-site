@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="description" content="Become a vendor at Haunted Takeover™ by ADW LIVE. Pick your booth level and secure your space at one of Las Vegas' most exciting experiential events.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #07070c; }
+  body { font-family: 'Archivo', system-ui, sans-serif; color: #f5f4fa; -webkit-font-smoothing: antialiased; }
+  a { color: #FE019A; text-decoration: none; }
+  a:hover { color: #ff4fc0; }
+  ::selection { background: #FE019A; color: #fff; }
+  @keyframes adw-gradshift { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
+  @keyframes adw-pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(57,255,136,.5); } 50% { box-shadow: 0 0 30px 5px rgba(57,255,136,.5); } }
+  input::placeholder, textarea::placeholder { color: #6b6880; }
+</style>
+<template id="__bundler_thumbnail">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#39ff88"/><stop offset="0.5" stop-color="#1ea7ff"/><stop offset="1" stop-color="#6914D1"/>
+    </linearGradient></defs>
+    <rect width="512" height="512" fill="#07070c"/>
+    <rect x="56" y="56" width="400" height="400" rx="48" fill="url(#g)"/>
+    <text x="256" y="238" font-family="Arial Black, sans-serif" font-weight="900" font-size="110" fill="#fff" text-anchor="middle">ADW</text>
+    <text x="256" y="336" font-family="Arial, sans-serif" font-weight="700" font-size="46" fill="#fff" text-anchor="middle">VENDORS</text>
+  </svg>
+</template>
+</helmet>
+<div style="position:relative; overflow-x:hidden; background:#07070c; min-height:100vh;">
+
+  <!-- ===== NAV ===== -->
+  <header style="position:sticky; top:0; z-index:100; display:flex; align-items:center; justify-content:space-between; gap:20px; padding:14px 34px; background:rgba(10,10,17,.82); backdrop-filter:blur(18px); border-bottom:1px solid rgba(255,255,255,.08);">
+    <a href="index.html" style="display:flex; align-items:baseline; gap:2px; font-family:'Anton',sans-serif; font-size:24px; letter-spacing:1px; line-height:1;">
+      <span style="background:linear-gradient(90deg,#FE019A,#6914D1,#1ea7ff); -webkit-background-clip:text; background-clip:text; color:transparent;">ADW</span>
+      <span style="color:#fff; margin-left:7px;">LIVE</span>
+      <span style="color:#39ff88; font-size:11px; margin-left:2px; align-self:flex-start;">™</span>
+    </a>
+    <a href="index.html" style="font-size:12.5px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#cfccdb;" style-hover="color:#fff;">← Back to Site</a>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section style="position:relative; padding:70px 34px 40px; text-align:center; overflow:hidden;">
+    <div style="position:absolute; top:-160px; left:50%; transform:translateX(-50%); width:800px; height:800px; border-radius:50%; background:radial-gradient(circle,rgba(57,255,136,.2),rgba(30,167,255,.12),transparent 68%); filter:blur(12px);"></div>
+    <div style="position:relative; z-index:1; max-width:860px; margin:0 auto;">
+      <span style="font-size:12px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#39ff88;">Vendor Applications · Haunted Takeover™ · Oct 24, 2026</span>
+      <h1 style="font-family:'Anton',sans-serif; font-weight:400; font-size:clamp(42px,8vw,92px); line-height:.9; margin:16px 0 14px; text-transform:uppercase;">Sell Where<br>The Night Lives.</h1>
+      <p style="font-size:clamp(16px,2.2vw,20px); line-height:1.6; color:#c4c1d2; margin:0 auto; max-width:640px;">Put your business in front of thousands of festival-goers in Henderson, NV. Pick a booth level, reserve your space, and we handle the rest.</p>
+    </div>
+  </section>
+
+  <!-- ===== STATS STRIP ===== -->
+  <section style="max-width:900px; margin:0 auto; padding:24px 34px 20px;">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:16px;">
+      <div style="text-align:center; padding:18px; border-radius:16px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.02);">
+        <div style="font-family:'Anton',sans-serif; font-size:34px; background:linear-gradient(90deg,#39ff88,#1ea7ff); -webkit-background-clip:text; background-clip:text; color:transparent;">5,000+</div>
+        <div style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#8f8ba0; margin-top:4px;">Expected Guests</div>
+      </div>
+      <div style="text-align:center; padding:18px; border-radius:16px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.02);">
+        <div style="font-family:'Anton',sans-serif; font-size:34px; background:linear-gradient(90deg,#FE019A,#6914D1); -webkit-background-clip:text; background-clip:text; color:transparent;">7 Hrs</div>
+        <div style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#8f8ba0; margin-top:4px;">Of Foot Traffic</div>
+      </div>
+      <div style="text-align:center; padding:18px; border-radius:16px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.02);">
+        <div style="font-family:'Anton',sans-serif; font-size:34px; background:linear-gradient(90deg,#ff7a1a,#FE019A); -webkit-background-clip:text; background-clip:text; color:transparent;">Limited</div>
+        <div style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:#8f8ba0; margin-top:4px;">Booth Spaces</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MAIN: LEVELS + FORM / SUMMARY ===== -->
+  <section style="max-width:1180px; margin:0 auto; padding:40px 34px 100px; display:grid; grid-template-columns:1fr; gap:26px;" class="adw-vgrid">
+
+    <!-- LEFT: STEP PANELS -->
+    <div>
+      <!-- step indicator -->
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:24px;">
+        <div style="display:flex; align-items:center; gap:9px; padding:9px 16px; border-radius:999px; font-size:12px; font-weight:800; letter-spacing:.6px; text-transform:uppercase; color:{{ step1Color }}; background:{{ step1Bg }}; border:1px solid {{ step1Border }};">
+          <span style="display:flex; align-items:center; justify-content:center; width:20px; height:20px; border-radius:50%; font-size:11px; background:{{ step1DotBg }}; color:{{ step1DotColor }};">1</span>Booth Level
+        </div>
+        <div style="flex:1; height:1px; background:rgba(255,255,255,.12);"></div>
+        <div style="display:flex; align-items:center; gap:9px; padding:9px 16px; border-radius:999px; font-size:12px; font-weight:800; letter-spacing:.6px; text-transform:uppercase; color:{{ step2Color }}; background:{{ step2Bg }}; border:1px solid {{ step2Border }};">
+          <span style="display:flex; align-items:center; justify-content:center; width:20px; height:20px; border-radius:50%; font-size:11px; background:{{ step2DotBg }}; color:{{ step2DotColor }};">2</span>Business Info
+        </div>
+      </div>
+
+      <!-- STEP 1: LEVELS -->
+      <sc-if value="{{ isSelectStep }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <sc-for list="{{ levels }}" as="l" hint-placeholder-count="4">
+            <div onClick="{{ l.select }}" style="cursor:pointer; position:relative; padding:2px; border-radius:22px; background:{{ l.shell }}; box-shadow:{{ l.glow }}; transition:transform .25s ease, box-shadow .25s ease;" style-hover="transform:translateY(-4px);">
+             <div style="position:relative; padding:28px 28px 24px; border-radius:20px; background:{{ l.bg }}; overflow:hidden;">
+              <div style="position:absolute; top:-40px; right:-40px; width:180px; height:180px; border-radius:50%; background:radial-gradient(circle,{{ l.aura }},transparent 70%); pointer-events:none;"></div>
+              <div style="position:relative; display:flex; align-items:flex-start; justify-content:space-between; gap:18px; flex-wrap:wrap;">
+                <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+                  <sc-if value="{{ l.popular }}" hint-placeholder-val="{{ false }}">
+                    <span style="padding:6px 14px; border-radius:999px; font-size:10px; font-weight:800; letter-spacing:1.4px; text-transform:uppercase; color:#062a16; background:linear-gradient(90deg,#39ff88,#1ea7ff); box-shadow:0 0 18px rgba(57,255,136,.5);">★ Most Popular</span>
+                  </sc-if>
+                  <sc-if value="{{ l.hasBadge }}" hint-placeholder-val="{{ false }}">
+                    <span style="padding:6px 14px; border-radius:999px; font-size:10px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; color:#062a16; background:#39ff88; box-shadow:0 0 16px rgba(57,255,136,.45);">{{ l.badge }}</span>
+                  </sc-if>
+                </div>
+                <div style="text-align:right; flex-shrink:0; margin-left:auto;">
+                  <sc-if value="{{ l.hasWas }}" hint-placeholder-val="{{ false }}">
+                    <span style="font-family:'Anton',sans-serif; font-size:22px; color:#6b6880; text-decoration:line-through; margin-right:8px;">{{ l.wasLabel }}</span>
+                  </sc-if>
+                  <span style="font-family:'Anton',sans-serif; font-size:44px; line-height:1; color:#fff;">{{ l.priceLabel }}</span>
+                </div>
+              </div>
+              <div style="position:relative; display:flex; align-items:center; gap:12px; margin:16px 0 6px;">
+                <span style="display:flex; align-items:center; justify-content:center; width:26px; height:26px; border-radius:50%; border:2px solid {{ l.radioBorder }};"><span style="width:12px; height:12px; border-radius:50%; background:{{ l.radioFill }};"></span></span>
+                <h3 style="font-family:'Anton',sans-serif; font-weight:400; font-size:28px; margin:0; text-transform:uppercase; letter-spacing:.5px; color:#fff;">{{ l.name }}</h3>
+              </div>
+              <p style="position:relative; font-size:13.5px; line-height:1.55; color:#a8a5b8; margin:0 0 18px; padding-left:38px;">{{ l.desc }}</p>
+              <div style="position:relative; display:grid; grid-template-columns:1fr 1fr; gap:10px 18px; padding-left:38px; margin-bottom:22px;" class="adw-perks">
+                <sc-for list="{{ l.perks }}" as="p" hint-placeholder-count="4">
+                  <div style="display:flex; align-items:center; gap:10px; font-size:13px; color:#d3d0e0;"><span style="display:flex; align-items:center; justify-content:center; width:18px; height:18px; border-radius:50%; flex-shrink:0; font-size:11px; font-weight:900; color:#062a16; background:{{ l.check }};">✓</span>{{ p }}</div>
+                </sc-for>
+              </div>
+              <button onClick="{{ l.reserve }}" style="position:relative; width:100%; padding:15px; border-radius:12px; border:0; cursor:pointer; font-size:13.5px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; color:{{ l.ctaColor }}; background:{{ l.ctaBg }}; transition:filter .2s ease;" style-hover="filter:brightness(1.12);">{{ l.cta }}</button>
+             </div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <!-- STEP 2: BUSINESS INFO -->
+      <sc-if value="{{ isDetailsStep }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex; flex-direction:column; gap:18px;">
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+            <div>
+              <h2 style="font-family:'Anton',sans-serif; font-weight:400; font-size:24px; margin:0; text-transform:uppercase; letter-spacing:.5px;">Tell Us About Your Business</h2>
+              <p style="font-size:13px; color:#8f8ba0; margin:6px 0 0;">We'll email your booth confirmation and setup details.</p>
+            </div>
+            <button onClick="{{ backToSelect }}" style="flex-shrink:0; padding:10px 16px; border-radius:999px; cursor:pointer; font-size:11.5px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#cfccdb; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.18);" style-hover="color:#fff; background:rgba(255,255,255,.14);">← Change Level</button>
+          </div>
+          <div style="padding:22px; border-radius:16px; border:1px solid rgba(255,255,255,.1); background:linear-gradient(160deg,#12121c,#0c0c14); display:grid; grid-template-columns:1fr 1fr; gap:14px;" class="adw-form">
+            <div style="grid-column:span 2;">
+              <label style="display:block; font-size:11px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:#8f8ba0; margin-bottom:7px;">Business Name</label>
+              <input value="{{ f.business }}" onChange="{{ onBusiness }}" placeholder="Your business or brand" style="width:100%; padding:14px 16px; border-radius:10px; border:1px solid {{ businessBorder }}; background:rgba(255,255,255,.05); color:#fff; font-size:14px; font-family:'Archivo',sans-serif;">
+            </div>
+            <div style="grid-column:span 2;">
+              <label style="display:block; font-size:11px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:#8f8ba0; margin-bottom:7px;">Business Category</label>
+              <select value="{{ f.category }}" onChange="{{ onCategory }}" style="width:100%; padding:14px 16px; border-radius:10px; border:1px solid rgba(255,255,255,.14); background:rgba(20,20,30,.9); color:#fff; font-size:14px; font-family:'Archivo',sans-serif;">
+                <option value="">Select a category…</option>
+                <option value="Food & Beverage">Food &amp; Beverage</option>
+                <option value="Retail & Merch">Retail &amp; Merch</option>
+                <option value="Art & Handmade">Art &amp; Handmade</option>
+                <option value="Health & Beauty">Health &amp; Beauty</option>
+                <option value="Services">Services</option>
+                <option value="Activation / Brand">Activation / Brand</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div>
+              <label style="display:block; font-size:11px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:#8f8ba0; margin-bottom:7px;">Contact Name</label>
+              <input value="{{ f.name }}" onChange="{{ onName }}" placeholder="Full name" style="width:100%; padding:14px 16px; border-radius:10px; border:1px solid {{ nameBorder }}; background:rgba(255,255,255,.05); color:#fff; font-size:14px; font-family:'Archivo',sans-serif;">
+            </div>
+            <div>
+              <label style="display:block; font-size:11px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:#8f8ba0; margin-bottom:7px;">Phone</label>
+              <input value="{{ f.phone }}" onChange="{{ onPhone }}" type="tel" placeholder="Mobile number" style="width:100%; padding:14px 16px; border-radius:10px; border:1px solid {{ phoneBorder }}; background:rgba(255,255,255,.05); color:#fff; font-size:14px; font-family:'Archivo',sans-serif;">
+            </div>
+            <div style="grid-column:span 2;">
+              <label style="display:block; font-size:11px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:#8f8ba0; margin-bottom:7px;">Email</label>
+              <input value="{{ f.email }}" onChange="{{ onEmail }}" type="email" placeholder="you@business.com" style="width:100%; padding:14px 16px; border-radius:10px; border:1px solid {{ emailBorder }}; background:rgba(255,255,255,.05); color:#fff; font-size:14px; font-family:'Archivo',sans-serif;">
+            </div>
+            <div style="grid-column:span 2;">
+              <label style="display:block; font-size:11px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:#8f8ba0; margin-bottom:7px;">What will you be selling / showcasing? <span style="color:#54526a; text-transform:none; letter-spacing:0;">(optional)</span></label>
+              <textarea value="{{ f.notes }}" onChange="{{ onNotes }}" placeholder="A quick description of your products, setup needs, power requirements, etc." rows="3" style="width:100%; padding:14px 16px; border-radius:10px; border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.05); color:#fff; font-size:14px; font-family:'Archivo',sans-serif; resize:vertical;"></textarea>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+
+    <!-- RIGHT: SUMMARY -->
+    <aside style="align-self:start;" class="adw-vsummary">
+      <div style="border-radius:20px; border:1px solid rgba(255,255,255,.1); background:linear-gradient(160deg,#12121c,#0c0c14); overflow:hidden;">
+        <div style="padding:20px 24px; border-bottom:1px solid rgba(255,255,255,.08); background:linear-gradient(90deg,rgba(57,255,136,.14),rgba(30,167,255,.14));">
+          <h2 style="font-family:'Anton',sans-serif; font-weight:400; font-size:22px; margin:0; letter-spacing:.5px; text-transform:uppercase;">Your Booth</h2>
+        </div>
+        <div style="padding:22px 24px;">
+          <sc-if value="{{ hasSelection }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; justify-content:space-between; gap:12px; margin-bottom:6px;">
+              <span style="font-size:15px; font-weight:800; color:#fff;">{{ selectedName }}</span>
+              <span style="font-family:'Anton',sans-serif; font-size:22px; color:#fff; white-space:nowrap;">{{ selectedPrice }}</span>
+            </div>
+            <p style="font-size:12.5px; line-height:1.5; color:#8f8ba0; margin:0 0 18px;">{{ selectedDesc }}</p>
+            <div style="display:flex; justify-content:space-between; font-size:13px; color:#8f8ba0; padding:12px 0; border-top:1px solid rgba(255,255,255,.08);">
+              <span>Booth fee</span><span>{{ selectedPrice }}</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; font-size:13px; color:#8f8ba0; padding-bottom:12px;">
+              <span>Processing ({{ feePct }}%)</span><span>{{ fee }}</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:baseline; padding:14px 0 20px; border-top:1px solid rgba(255,255,255,.14);">
+              <span style="font-size:15px; font-weight:800; text-transform:uppercase; letter-spacing:1px;">Total</span>
+              <span style="font-family:'Anton',sans-serif; font-size:30px; color:#fff;">{{ total }}</span>
+            </div>
+            <sc-if value="{{ isDetailsStep }}" hint-placeholder-val="{{ false }}">
+              <div style="padding:14px 16px; margin-bottom:16px; border-radius:12px; border:1px solid {{ termsBorder }}; background:rgba(255,255,255,.03);">
+                <label style="display:flex; align-items:flex-start; gap:11px; cursor:pointer;">
+                  <input type="checkbox" checked="{{ agreed }}" onChange="{{ onAgree }}" style="width:18px; height:18px; margin-top:1px; flex-shrink:0; accent-color:#39ff88; cursor:pointer;">
+                  <span style="font-size:12px; line-height:1.55; color:#b0adbf;">I agree to the <a href="#" style="color:#39ff88;">Vendor Terms &amp; Conditions</a>. I understand my payment is an <strong style="color:#f5f4fa;">authorization pending vendor approval</strong> — if I'm not approved, the hold is released in full with no charge. Once approved, <strong style="color:#f5f4fa;">booth fees are final and non-refundable</strong> for cancellations, no-shows, or weather.</span>
+                </label>
+              </div>
+            </sc-if>
+            <button onClick="{{ primaryAction }}" style="width:100%; padding:16px; border-radius:12px; border:0; cursor:pointer; font-size:14px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; color:#062a16; background:linear-gradient(90deg,#39ff88,#1ea7ff); animation:adw-pulse 2.6s ease-in-out infinite;" style-hover="filter:brightness(1.08);">{{ primaryLabel }}</button>
+            <sc-if value="{{ formError }}" hint-placeholder-val="{{ false }}">
+              <p style="font-size:12px; color:#ff6b9d; margin:12px 0 0; text-align:center;">{{ errorMsg }}</p>
+            </sc-if>
+            <div style="display:flex; align-items:center; justify-content:center; gap:7px; margin-top:14px; font-size:11px; color:#6b6880;">
+              <span style="width:7px; height:7px; border-radius:50%; background:#39ff88;"></span>
+              Secure payment powered by Stripe
+            </div>
+          </sc-if>
+          <sc-if value="{{ noSelection }}" hint-placeholder-val="{{ true }}">
+            <div style="text-align:center; padding:24px 8px;">
+              <div style="font-family:'Anton',sans-serif; font-size:20px; color:#4a4860;">No level selected</div>
+              <p style="font-size:13px; color:#8f8ba0; margin:8px 0 0;">Pick a booth level to reserve your space.</p>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+      <p style="font-size:11.5px; line-height:1.6; color:#6b6880; margin:16px 4px 0;">Booth fees are non-refundable and secure your space on a first-come basis. Setup and load-in details are emailed after payment.</p>
+    </aside>
+  </section>
+
+  <!-- ===== INFO BAR ===== -->
+  <section style="max-width:1180px; margin:0 auto; padding:0 34px 60px;">
+    <div style="border-radius:20px; border:1px solid rgba(255,255,255,.08); background:linear-gradient(120deg,rgba(57,255,136,.06),rgba(30,167,255,.05),rgba(105,20,209,.06)); padding:30px 30px; display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:22px;">
+      <div style="display:flex; align-items:flex-start; gap:12px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#39ff88" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        <div><div style="font-size:13.5px; font-weight:800; color:#fff;">Payment Plans Available</div><div style="font-size:12px; color:#8f8ba0; margin-top:2px;">Split your booth fee — just ask.</div></div>
+      </div>
+      <div style="display:flex; align-items:flex-start; gap:12px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1ea7ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="10"/></svg>
+        <div><div style="font-size:13.5px; font-weight:800; color:#fff;">Limited Vendor Spaces</div><div style="font-size:12px; color:#8f8ba0; margin-top:2px;">Curated count — spaces sell out.</div></div>
+      </div>
+      <div style="display:flex; align-items:flex-start; gap:12px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b98bff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><polygon points="12 2 15 9 22 9 16 14 18 21 12 17 6 21 8 14 2 9 9 9"/></svg>
+        <div><div style="font-size:13.5px; font-weight:800; color:#fff;">Curated Experience</div><div style="font-size:12px; color:#8f8ba0; margin-top:2px;">A quality lineup, not a flea market.</div></div>
+      </div>
+      <div style="display:flex; align-items:flex-start; gap:12px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff9d4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        <div><div style="font-size:13.5px; font-weight:800; color:#fff;">Vendor Approval Required</div><div style="font-size:12px; color:#8f8ba0; margin-top:2px;">Every vendor is reviewed.</div></div>
+      </div>
+      <div style="display:flex; align-items:flex-start; gap:12px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FE019A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        <div><div style="font-size:13.5px; font-weight:800; color:#fff;">Power as an Add-On</div><div style="font-size:12px; color:#8f8ba0; margin-top:2px;">Electricity available on request.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BOTTOM CTA BANNER ===== -->
+  <section style="max-width:1180px; margin:0 auto; padding:0 34px 90px;">
+    <div style="position:relative; overflow:hidden; border-radius:26px; padding:64px 40px; text-align:center; background:linear-gradient(120deg,#150a26,#0a0a12 55%,#04140d);">
+      <div style="position:absolute; top:-140px; left:20%; width:420px; height:420px; border-radius:50%; background:radial-gradient(circle,rgba(254,1,154,.28),transparent 70%); filter:blur(14px); pointer-events:none;"></div>
+      <div style="position:absolute; bottom:-160px; right:15%; width:460px; height:460px; border-radius:50%; background:radial-gradient(circle,rgba(57,255,136,.22),transparent 70%); filter:blur(16px); pointer-events:none;"></div>
+      <div style="position:relative; z-index:1; max-width:680px; margin:0 auto;">
+        <h2 style="font-family:'Anton',sans-serif; font-weight:400; font-size:clamp(34px,6vw,64px); line-height:.98; margin:0 0 18px; text-transform:uppercase;">Ready To Join<br>The Takeover?</h2>
+        <p style="font-size:clamp(15px,2vw,18px); line-height:1.6; color:#c4c1d2; margin:0 0 32px;">Become part of one of Las Vegas' fastest-growing Halloween experiences and put your brand in front of thousands of attendees.</p>
+        <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:14px;">
+          <a href="#top" onClick="{{ scrollTop }}" style="padding:16px 36px; border-radius:999px; font-size:14px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; color:#062a16; background:linear-gradient(90deg,#39ff88,#1ea7ff); box-shadow:0 12px 34px rgba(57,255,136,.35);" style-hover="filter:brightness(1.08); transform:translateY(-2px);">Apply Now</a>
+          <a href="#" style="padding:16px 36px; border-radius:999px; font-size:14px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; color:#fff; background:rgba(255,255,255,.06); border:1.5px solid rgba(255,255,255,.32);" style-hover="background:rgba(255,255,255,.14);">Download Vendor Guide</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section style="max-width:840px; margin:0 auto; padding:0 34px 100px;">
+    <h2 style="font-family:'Anton',sans-serif; font-weight:400; font-size:clamp(28px,5vw,48px); line-height:1; margin:0 0 28px; text-transform:uppercase; text-align:center;">Vendor FAQ</h2>
+    <div style="display:flex; flex-direction:column; gap:12px;">
+      <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="4">
+        <div style="border:1px solid rgba(255,255,255,.1); border-radius:14px; overflow:hidden; background:#0e0e16;">
+          <button onClick="{{ q.toggle }}" style="width:100%; display:flex; align-items:center; justify-content:space-between; gap:18px; padding:18px 22px; background:none; border:0; cursor:pointer; text-align:left; color:#fff; font-family:'Archivo',sans-serif; font-size:15px; font-weight:700;">
+            <span>{{ q.q }}</span>
+            <span style="flex-shrink:0; font-family:'Anton',sans-serif; font-size:22px; line-height:1; color:#39ff88;">{{ q.sign }}</span>
+          </button>
+          <div style="overflow:hidden; transition:max-height .4s ease; max-height:{{ q.max }};">
+            <p style="padding:0 22px 20px; margin:0; font-size:14px; line-height:1.6; color:#b0adbf;">{{ q.a }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ===== CHECKOUT PAYLOAD FALLBACK ===== -->
+  <sc-if value="{{ showPayload }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closePayload }}" style="position:fixed; inset:0; z-index:200; display:flex; align-items:center; justify-content:center; padding:24px; background:rgba(4,4,8,.8); backdrop-filter:blur(6px);">
+      <div style="max-width:520px; width:100%; border-radius:20px; border:1px solid rgba(255,255,255,.12); background:#12121c; padding:30px;">
+        <h3 style="font-family:'Anton',sans-serif; font-weight:400; font-size:24px; margin:0 0 6px; text-transform:uppercase;">Ready for Stripe</h3>
+        <p style="font-size:13.5px; line-height:1.6; color:#b0adbf; margin:0 0 18px;">No checkout endpoint is connected yet. Here's the exact payload this page will send to Stripe once wired up:</p>
+        <pre style="max-height:260px; overflow:auto; margin:0 0 20px; padding:16px; border-radius:12px; background:#08080d; border:1px solid rgba(255,255,255,.08); font-size:11.5px; line-height:1.5; color:#8ee6b0; white-space:pre-wrap; word-break:break-word;">{{ payloadText }}</pre>
+        <button onClick="{{ closePayload }}" style="width:100%; padding:14px; border-radius:10px; border:0; cursor:pointer; font-size:13px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#062a16; background:linear-gradient(90deg,#39ff88,#1ea7ff);">Close</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <style>
+    @media (min-width: 900px) {
+      .adw-vgrid { grid-template-columns: 1.7fr 1fr !important; align-items:start; }
+      .adw-vsummary { position: sticky; top: 92px; }
+    }
+    @media (max-width: 560px) {
+      .adw-form { grid-template-columns: 1fr !important; }
+      .adw-form > div { grid-column: span 1 !important; }
+    }
+  </style>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;checkoutEndpoint&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Stripe&quot; },
+  &quot;currency&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;usd&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Stripe&quot; },
+  &quot;processingFeePercent&quot;: { &quot;editor&quot;: &quot;range&quot;, &quot;default&quot;: 3, &quot;min&quot;: 0, &quot;max&quot;: 20, &quot;step&quot;: 0.5, &quot;unit&quot;: &quot;%&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Pricing&quot; }
+}">
+class Component extends DCLogic {
+  state = { selected: null, step: 'select', form: { business: '', category: '', name: '', email: '', phone: '', notes: '' }, agreed: false, formError: false, errorMsg: '', openFaq: -1, showPayload: false, payloadText: '' };
+
+  levelDefs = [
+    { id: 'standard', name: 'Standard Vendor', price: 35000, theme: 'blue', popular: false, cta: 'Reserve My Booth',
+      desc: 'Perfect for local businesses, artists, boutiques and specialty retailers.',
+      perks: ['10×10 Booth Space', 'Vendor Listing', 'Social Media Feature', 'Event Exposure'] },
+    { id: 'premium', name: 'Premium Vendor', price: 50000, theme: 'green', popular: true, cta: 'Become Premium',
+      desc: 'Ideal for brands wanting more visibility.',
+      perks: ['Larger Premium Placement', 'Higher Foot Traffic Location', 'Featured Vendor Listing', 'Priority Placement'] },
+    { id: 'food', name: 'Food Vendor', price: 35000, wasPrice: 50000, theme: 'orange', popular: false, cta: 'Apply Today',
+      badge: 'Early Registration',
+      desc: 'For food tents and mobile food vendors.',
+      perks: ['Premium Food Court Placement', 'Health Department Approved Area', 'High Traffic Location', 'Featured on Event Map'] },
+    { id: 'foodtruck', name: 'Food Truck', price: 50000, wasPrice: 75000, theme: 'purple', popular: false, cta: 'Reserve My Space',
+      badge: 'Early Registration',
+      desc: 'For mobile food trucks — limited premium spaces at a special early rate.',
+      perks: ['Premium Food Truck Space', 'High Visibility Placement', 'Limited Availability', 'Featured on Event Map'] },
+  ];
+
+  themeMap = {
+    blue:   { base: 'rgba(30,167,255,.26)', bg: 'linear-gradient(160deg,#111826,#0b0b13)', sel: '#1ea7ff', check: '#5cc0ff', aura: 'rgba(30,167,255,.28)' },
+    green:  { base: 'rgba(57,255,136,.3)',  bg: 'linear-gradient(160deg,#0f1a16,#0b0b13)', sel: '#39ff88', check: '#39ff88', aura: 'rgba(57,255,136,.3)' },
+    purple: { base: 'rgba(105,20,209,.34)', bg: 'linear-gradient(160deg,#16101f,#0b0b13)', sel: '#b98bff', check: '#b98bff', aura: 'rgba(105,20,209,.34)' },
+    orange: { base: 'rgba(255,122,26,.3)',  bg: 'linear-gradient(160deg,#1c130b,#0b0b13)', sel: '#ff9d4d', check: '#ff9d4d', aura: 'rgba(255,122,26,.3)' },
+  };
+
+  faqData = [
+    { q: 'When is load-in and setup?', a: 'Vendor load-in begins the afternoon of October 24, 2026 at Galleria at Sunset in Henderson, NV. Exact times and gate assignments are emailed after your booth is confirmed.' },
+    { q: 'Do I need my own tent and tables?', a: 'Yes — vendors provide their own 10×10 tent, tables, chairs, and display. Anchor and Feature booths can request add-ons; note it in your application.' },
+    { q: 'Is power included?', a: 'Standard booths are not powered. Food Truck spots include power hookup access. If you need electricity, note your requirements in the application and we will follow up.' },
+    { q: 'What is the refund policy?', a: 'Booth fees are non-refundable and secure your space on a first-come basis. Spaces are limited and assigned in the order applications and payments are received.' },
+  ];
+
+  usd(cents) { return '$' + (cents / 100).toLocaleString('en-US', { minimumFractionDigits: cents % 100 ? 2 : 0, maximumFractionDigits: 2 }); }
+
+  setField(k, v) { this.setState((s) => ({ form: { ...s.form, [k]: v }, formError: false })); }
+
+  selectLevel(id) { this.setState({ selected: id }); }
+
+  goToDetails() {
+    if (!this.state.selected) return;
+    this.setState({ step: 'details', formError: false });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  formValid() {
+    const f = this.state.form;
+    return f.business.trim().length > 1 && f.name.trim().length > 1 &&
+      /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.email.trim()) && f.phone.replace(/\D/g, '').length >= 7;
+  }
+
+  tryComplete() {
+    if (!this.formValid()) { this.setState({ formError: true, errorMsg: 'Please fill in business name, contact name, a valid email and phone.' }); return; }
+    if (!this.state.agreed) { this.setState({ formError: true, errorMsg: 'Please agree to the Vendor Terms & Conditions to continue.' }); return; }
+    this.checkout();
+  }
+
+  async checkout() {
+    const lvl = this.levelDefs.find((l) => l.id === this.state.selected);
+    if (!lvl) return;
+    const f = this.state.form;
+    const payload = {
+      line_items: [{ price_data: { currency: (this.props.currency ?? 'usd'), product_data: { name: 'Vendor Booth — ' + lvl.name }, unit_amount: lvl.price }, quantity: 1 }],
+      vendor: { business: f.business.trim(), category: f.category, contact: f.name.trim(), email: f.email.trim(), phone: f.phone.trim(), notes: f.notes.trim(), level: lvl.name },
+      event: 'haunted-takeover-2026-vendor',
+    };
+    const endpoint = this.props.checkoutEndpoint;
+    if (endpoint) {
+      try {
+        const res = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+        const data = await res.json();
+        if (data.url) { window.location.assign(data.url); return; }
+      } catch (e) { /* fall through */ }
+    }
+    this.setState({ showPayload: true, payloadText: JSON.stringify(payload, null, 2) });
+  }
+
+  renderVals() {
+    const feePct = this.props.processingFeePercent ?? 3;
+    const isDetails = this.state.step === 'details';
+    const err = this.state.formError;
+    const errB = '#ff6b9d', okB = 'rgba(255,255,255,.14)';
+    const f = this.state.form;
+
+    const levels = this.levelDefs.map((l) => {
+      const th = this.themeMap[l.theme];
+      const on = this.state.selected === l.id;
+      const glowOn = on || l.popular;
+      return {
+        name: l.name, desc: l.desc, perks: l.perks, priceLabel: this.usd(l.price), popular: l.popular, cta: l.cta,
+        hasBadge: !!l.badge, badge: l.badge || '',
+        hasWas: !!l.wasPrice, wasLabel: l.wasPrice ? this.usd(l.wasPrice) : '',
+        shell: (on || l.popular) ? 'linear-gradient(120deg,#39ff88,#1ea7ff,#6914D1,#FE019A)' : th.base,
+        glow: glowOn ? '0 0 34px ' + th.aura : 'none',
+        bg: th.bg,
+        aura: th.aura,
+        radioBorder: on ? th.sel : 'rgba(255,255,255,.3)',
+        radioFill: on ? th.sel : 'transparent',
+        check: th.check,
+        ctaBg: (on || l.popular) ? 'linear-gradient(90deg,#39ff88,#1ea7ff)' : 'rgba(255,255,255,.08)',
+        ctaColor: (on || l.popular) ? '#062a16' : '#fff',
+        select: () => this.selectLevel(l.id),
+        reserve: (e) => { e.stopPropagation(); this.selectLevel(l.id); this.goToDetails(); },
+      };
+    });
+
+    const sel = this.levelDefs.find((l) => l.id === this.state.selected);
+    const priceCents = sel ? sel.price : 0;
+    const feeCents = Math.round(priceCents * feePct / 100);
+
+    const active = { color: '#fff', bg: 'rgba(57,255,136,.14)', border: 'rgba(57,255,136,.4)', dotBg: 'linear-gradient(90deg,#39ff88,#1ea7ff)', dotColor: '#062a16' };
+    const idle = { color: '#8f8ba0', bg: 'rgba(255,255,255,.03)', border: 'rgba(255,255,255,.1)', dotBg: 'rgba(255,255,255,.1)', dotColor: '#8f8ba0' };
+    const s1 = isDetails ? idle : active;
+    const s2 = isDetails ? active : idle;
+
+    const faqs = this.faqData.map((it, i) => ({
+      q: it.q, a: it.a,
+      sign: this.state.openFaq === i ? '–' : '+',
+      max: this.state.openFaq === i ? '240px' : '0px',
+      toggle: () => this.setState((s) => ({ openFaq: s.openFaq === i ? -1 : i })),
+    }));
+
+    return {
+      levels, feePct, faqs,
+      isSelectStep: !isDetails,
+      isDetailsStep: isDetails,
+      hasSelection: !!sel,
+      noSelection: !sel,
+      selectedName: sel ? sel.name : '',
+      selectedDesc: sel ? sel.desc : '',
+      selectedPrice: sel ? this.usd(sel.price) : '',
+      fee: this.usd(feeCents),
+      total: this.usd(priceCents + feeCents),
+      f,
+      onBusiness: (e) => this.setField('business', e.target.value),
+      onCategory: (e) => this.setField('category', e.target.value),
+      onName: (e) => this.setField('name', e.target.value),
+      onEmail: (e) => this.setField('email', e.target.value),
+      onPhone: (e) => this.setField('phone', e.target.value),
+      onNotes: (e) => this.setField('notes', e.target.value),
+      businessBorder: err && f.business.trim().length <= 1 ? errB : okB,
+      nameBorder: err && f.name.trim().length <= 1 ? errB : okB,
+      emailBorder: err && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.email.trim()) ? errB : okB,
+      phoneBorder: err && f.phone.replace(/\D/g, '').length < 7 ? errB : okB,
+      formError: err,
+      errorMsg: this.state.errorMsg,
+      agreed: this.state.agreed,
+      onAgree: (e) => this.setState({ agreed: e.target.checked, formError: false }),
+      termsBorder: (err && !this.state.agreed) ? '#ff6b9d' : 'rgba(255,255,255,.1)',
+      primaryLabel: isDetails ? 'Reserve & Pay' : 'Continue to Business Info',
+      primaryAction: isDetails ? () => this.tryComplete() : () => this.goToDetails(),
+      backToSelect: () => this.setState({ step: 'select', formError: false }),
+      step1Color: s1.color, step1Bg: s1.bg, step1Border: s1.border, step1DotBg: s1.dotBg, step1DotColor: s1.dotColor,
+      step2Color: s2.color, step2Bg: s2.bg, step2Border: s2.border, step2DotBg: s2.dotBg, step2DotColor: s2.dotColor,
+      showPayload: this.state.showPayload,
+      payloadText: this.state.payloadText,
+      closePayload: () => this.setState({ showPayload: false }),
+      scrollTop: (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); },
+    };
+  }
+}
+</script>
+</body>
+</html>

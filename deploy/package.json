@@ -1,0 +1,9 @@
+{
+  "name": "adw-live-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ADW LIVE — festival site + Stripe ticket checkout",
+  "dependencies": {
+    "stripe": "^16.0.0"
+  }
+}

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="description" content="Get tickets to Haunted Takeover™ by ADW LIVE — October 24, 2026, Galleria at Sunset, Henderson NV. GA, costume competitions, makeup comp and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #07070c; }
+  body { font-family: 'Archivo', system-ui, sans-serif; color: #f5f4fa; -webkit-font-smoothing: antialiased; }
+  a { color: #FE019A; text-decoration: none; }
+  a:hover { color: #ff4fc0; }
+  ::selection { background: #FE019A; color: #fff; }
+  @keyframes adw-gradshift { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
+  @keyframes adw-pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(254,1,154,.5); } 50% { box-shadow: 0 0 30px 5px rgba(254,1,154,.5); } }
+</style>
+</helmet>
+<div style="position:relative; overflow-x:hidden; background:#07070c; min-height:100vh;">
+
+  <!-- ===== NAV ===== -->
+  <header style="position:sticky; top:0; z-index:100; display:flex; align-items:center; justify-content:space-between; gap:20px; padding:14px 34px; background:rgba(10,10,17,.82); backdrop-filter:blur(18px); border-bottom:1px solid rgba(255,255,255,.08);">
+    <a href="index.html" style="display:flex; align-items:baseline; gap:2px; font-family:'Anton',sans-serif; font-size:24px; letter-spacing:1px; line-height:1;">
+      <span style="background:linear-gradient(90deg,#FE019A,#6914D1,#1ea7ff); -webkit-background-clip:text; background-clip:text; color:transparent;">ADW</span>
+      <span style="color:#fff; margin-left:7px;">LIVE</span>
+      <span style="color:#39ff88; font-size:11px; margin-left:2px; align-self:flex-start;">™</span>
+    </a>
+    <a href="index.html" style="font-size:12.5px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#cfccdb;" style-hover="color:#fff;">← Back to Site</a>
+  </header>
+
+  <!-- ===== HERO STRIP ===== -->
+  <section style="position:relative; padding:64px 34px 40px; text-align:center; overflow:hidden;">
+    <div style="position:absolute; top:-160px; left:50%; transform:translateX(-50%); width:760px; height:760px; border-radius:50%; background:radial-gradient(circle,rgba(105,20,209,.28),transparent 68%); filter:blur(10px);"></div>
+    <div style="position:relative; z-index:1; max-width:820px; margin:0 auto;">
+      <span style="font-size:12px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#ff7a1a;">Haunted Takeover™ · Oct 24, 2026 · 4–11 PM · Henderson, NV</span>
+      <h1 style="font-family:'Anton',sans-serif; font-weight:400; font-size:clamp(40px,8vw,88px); line-height:.92; margin:14px 0 12px; text-transform:uppercase;">Get Tickets</h1>
+      <p style="font-family:'Anton',sans-serif; font-size:clamp(18px,3vw,26px); letter-spacing:1px; margin:0; background:linear-gradient(90deg,#FE019A,#ff7a1a,#39ff88); background-size:200% auto; -webkit-background-clip:text; background-clip:text; color:transparent; animation:adw-gradshift 6s linear infinite;">The Night Belongs To The Bold.</p>
+    </div>
+  </section>
+
+  <!-- ===== TICKETS + SUMMARY ===== -->
+  <section style="max-width:1180px; margin:0 auto; padding:20px 34px 100px; display:grid; grid-template-columns:1fr; gap:26px;" class="adw-ticketgrid">
+
+    <!-- LEFT: STEP PANELS -->
+    <div>
+      <!-- step indicator -->
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:22px;">
+        <div style="display:flex; align-items:center; gap:9px; padding:9px 16px; border-radius:999px; font-size:12px; font-weight:800; letter-spacing:.6px; text-transform:uppercase; color:{{ step1Color }}; background:{{ step1Bg }}; border:1px solid {{ step1Border }};">
+          <span style="display:flex; align-items:center; justify-content:center; width:20px; height:20px; border-radius:50%; font-size:11px; background:{{ step1DotBg }}; color:{{ step1DotColor }};">1</span>Tickets
+        </div>
+        <div style="flex:1; height:1px; background:rgba(255,255,255,.12);"></div>
+        <div style="display:flex; align-items:center; gap:9px; padding:9px 16px; border-radius:999px; font-size:12px; font-weight:800; letter-spacing:.6px; text-transform:uppercase; color:{{ step2Color }}; background:{{ step2Bg }}; border:1px solid {{ step2Border }};">
+          <span style="display:flex; align-items:center; justify-content:center; width:20px; height:20px; border-radius:50%; font-size:11px; background:{{ step2DotBg }}; color:{{ step2DotColor }};">2</span>Attendees
+        </div>
+      </div>
+
+      <!-- STEP 1: TIER LIST -->
+      <sc-if value="{{ isSelectStep }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <sc-for list="{{ tiers }}" as="t" hint-placeholder-count="9">
+            <div style="display:flex; align-items:center; flex-wrap:wrap; gap:18px; padding:20px 22px; border-radius:16px; border:1px solid {{ t.border }}; background:{{ t.bg }}; transition:border-color .2s ease;">
+              <div style="flex:1; min-width:0;">
+                <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+                  <span style="padding:4px 10px; border-radius:999px; font-size:9.5px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; color:{{ t.tagColor }}; background:{{ t.tagBg }};">{{ t.cat }}</span>
+                  <h3 style="font-size:16px; font-weight:800; margin:0; color:#fff;">{{ t.name }}</h3>
+                </div>
+                <p style="font-size:13px; line-height:1.5; color:#a8a5b8; margin:8px 0 0;">{{ t.desc }}</p>
+              </div>
+              <div style="font-family:'Anton',sans-serif; font-size:26px; color:#fff; min-width:74px; text-align:right;">{{ t.priceLabel }}</div>
+              <div style="display:flex; align-items:center; gap:2px; padding:4px; border-radius:999px; background:rgba(0,0,0,.35); border:1px solid rgba(255,255,255,.1);">
+                <button onClick="{{ t.dec }}" aria-label="Remove one" style="width:34px; height:34px; border-radius:50%; border:0; cursor:pointer; font-size:22px; line-height:1; color:#fff; background:rgba(255,255,255,.08);" style-hover="background:rgba(255,255,255,.18);">−</button>
+                <span style="min-width:30px; text-align:center; font-size:16px; font-weight:800; color:{{ t.qtyColor }};">{{ t.qty }}</span>
+                <button onClick="{{ t.inc }}" aria-label="Add one" style="width:34px; height:34px; border-radius:50%; border:0; cursor:pointer; font-size:20px; line-height:1; color:#fff; background:linear-gradient(90deg,#FE019A,#6914D1);" style-hover="filter:brightness(1.15);">+</button>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <!-- STEP 2: ATTENDEE DETAILS -->
+      <sc-if value="{{ isDetailsStep }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+            <div>
+              <h2 style="font-family:'Anton',sans-serif; font-weight:400; font-size:24px; margin:0; text-transform:uppercase; letter-spacing:.5px;">Who's Coming?</h2>
+              <p style="font-size:13px; color:#8f8ba0; margin:6px 0 0;">Every attendee gets their own ticket &amp; QR code by email and text.</p>
+            </div>
+            <button onClick="{{ backToSelect }}" style="flex-shrink:0; padding:10px 16px; border-radius:999px; cursor:pointer; font-size:11.5px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#cfccdb; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.18);" style-hover="color:#fff; background:rgba(255,255,255,.14);">← Edit Tickets</button>
+          </div>
+          <sc-for list="{{ attendees }}" as="a" hint-placeholder-count="2">
+            <div style="padding:20px 22px; border-radius:16px; border:1px solid rgba(255,255,255,.1); background:linear-gradient(160deg,#12121c,#0c0c14);">
+              <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:16px;">
+                <span style="display:flex; align-items:center; justify-content:center; width:26px; height:26px; border-radius:50%; font-family:'Anton',sans-serif; font-size:14px; color:#fff; background:linear-gradient(90deg,#FE019A,#6914D1);">{{ a.num }}</span>
+                <span style="font-size:15px; font-weight:800; color:#fff;">{{ a.tierName }}</span>
+                <sc-if value="{{ a.isPrimary }}" hint-placeholder-val="{{ false }}">
+                  <span style="padding:4px 10px; border-radius:999px; font-size:9.5px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; color:#39ff88; background:rgba(57,255,136,.14);">Primary Contact</span>
+                </sc-if>
+              </div>
+              <div class="adw-att-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+                <input value="{{ a.name }}" onChange="{{ a.onName }}" placeholder="Full name" style="grid-column:span 2; padding:14px 16px; border-radius:10px; border:1px solid {{ a.nameBorder }}; background:rgba(255,255,255,.05); color:#fff; font-size:14px; font-family:'Archivo',sans-serif;">
+                <input value="{{ a.email }}" onChange="{{ a.onEmail }}" type="email" placeholder="Email address" style="grid-column:span 1; padding:14px 16px; border-radius:10px; border:1px solid {{ a.emailBorder }}; background:rgba(255,255,255,.05); color:#fff; font-size:14px; font-family:'Archivo',sans-serif;">
+                <input value="{{ a.phone }}" onChange="{{ a.onPhone }}" type="tel" placeholder="Mobile number" style="grid-column:span 1; padding:14px 16px; border-radius:10px; border:1px solid {{ a.phoneBorder }}; background:rgba(255,255,255,.05); color:#fff; font-size:14px; font-family:'Archivo',sans-serif;">
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+
+    <!-- ORDER SUMMARY -->
+    <aside style="align-self:start;" class="adw-summary">
+      <div style="border-radius:20px; border:1px solid rgba(255,255,255,.1); background:linear-gradient(160deg,#12121c,#0c0c14); overflow:hidden;">
+        <div style="padding:20px 24px; border-bottom:1px solid rgba(255,255,255,.08); background:linear-gradient(90deg,rgba(254,1,154,.14),rgba(105,20,209,.14));">
+          <h2 style="font-family:'Anton',sans-serif; font-weight:400; font-size:22px; margin:0; letter-spacing:.5px; text-transform:uppercase;">Order Summary</h2>
+        </div>
+        <div style="padding:22px 24px;">
+          <sc-if value="{{ hasItems }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:18px;">
+              <sc-for list="{{ lines }}" as="l" hint-placeholder-count="2">
+                <div style="display:flex; justify-content:space-between; gap:12px; font-size:13.5px;">
+                  <span style="color:#cdcadb;">{{ l.label }}</span>
+                  <span style="color:#fff; font-weight:700; white-space:nowrap;">{{ l.amount }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <div style="display:flex; justify-content:space-between; font-size:13px; color:#8f8ba0; padding:12px 0; border-top:1px solid rgba(255,255,255,.08);">
+              <span>Subtotal</span><span>{{ subtotal }}</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; font-size:13px; color:#8f8ba0; padding-bottom:12px;">
+              <span>Service fee ({{ feePct }}%)</span><span>{{ fee }}</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:baseline; padding:14px 0 20px; border-top:1px solid rgba(255,255,255,.14);">
+              <span style="font-size:15px; font-weight:800; text-transform:uppercase; letter-spacing:1px;">Total</span>
+              <span style="font-family:'Anton',sans-serif; font-size:30px; color:#fff;">{{ total }}</span>
+            </div>
+            <button onClick="{{ primaryAction }}" style="width:100%; padding:16px; border-radius:12px; border:0; cursor:pointer; font-size:14px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; color:#fff; background:linear-gradient(90deg,#FE019A,#6914D1); animation:adw-pulse 2.6s ease-in-out infinite;" style-hover="filter:brightness(1.12);">{{ primaryLabel }}</button>
+            <sc-if value="{{ attError }}" hint-placeholder-val="{{ false }}">
+              <p style="font-size:12px; color:#ff6b9d; margin:12px 0 0; text-align:center;">Please fill in name, a valid email and phone for every attendee.</p>
+            </sc-if>
+            <div style="display:flex; align-items:center; justify-content:center; gap:7px; margin-top:14px; font-size:11px; color:#6b6880;">
+              <span style="width:7px; height:7px; border-radius:50%; background:#39ff88;"></span>
+              Encrypted checkout powered by Stripe
+            </div>
+          </sc-if>
+          <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ true }}">
+            <div style="text-align:center; padding:24px 8px;">
+              <div style="font-family:'Anton',sans-serif; font-size:20px; color:#4a4860;">No tickets yet</div>
+              <p style="font-size:13px; color:#8f8ba0; margin:8px 0 0;">Add tickets on the left to build your order.</p>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+      <p style="font-size:11.5px; line-height:1.6; color:#6b6880; margin:16px 4px 0;">All sales final. Tickets are non-refundable and delivered by email. Must arrive by 10 PM for competition check-in.</p>
+    </aside>
+  </section>
+
+  <!-- ===== CHECKOUT PANEL (fallback when no Stripe endpoint configured) ===== -->
+  <sc-if value="{{ showPayload }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closePayload }}" style="position:fixed; inset:0; z-index:200; display:flex; align-items:center; justify-content:center; padding:24px; background:rgba(4,4,8,.8); backdrop-filter:blur(6px);">
+      <div style="max-width:520px; width:100%; border-radius:20px; border:1px solid rgba(255,255,255,.12); background:#12121c; padding:30px;">
+        <h3 style="font-family:'Anton',sans-serif; font-weight:400; font-size:24px; margin:0 0 6px; text-transform:uppercase;">Ready for Stripe</h3>
+        <p style="font-size:13.5px; line-height:1.6; color:#b0adbf; margin:0 0 18px;">No checkout endpoint is connected yet, so here's the exact line-item payload this page will send to Stripe once wired up:</p>
+        <pre style="max-height:240px; overflow:auto; margin:0 0 20px; padding:16px; border-radius:12px; background:#08080d; border:1px solid rgba(255,255,255,.08); font-size:11.5px; line-height:1.5; color:#8ee6b0; white-space:pre-wrap; word-break:break-word;">{{ payloadText }}</pre>
+        <button onClick="{{ closePayload }}" style="width:100%; padding:14px; border-radius:10px; border:0; cursor:pointer; font-size:13px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#fff; background:linear-gradient(90deg,#FE019A,#6914D1);">Close</button>
+      </div>
+    </div>
+  </sc-if>
+
+  <style>
+    @media (min-width: 900px) {
+      .adw-ticketgrid { grid-template-columns: 1.7fr 1fr !important; align-items:start; }
+      .adw-summary { position: sticky; top: 92px; }
+    }
+    @media (max-width: 560px) {
+      .adw-att-grid { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</div>
+
+<template id="__bundler_thumbnail">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FE019A"/><stop offset="0.5" stop-color="#6914D1"/><stop offset="1" stop-color="#1ea7ff"/>
+    </linearGradient></defs>
+    <rect width="512" height="512" fill="#07070c"/>
+    <rect x="56" y="56" width="400" height="400" rx="48" fill="url(#g)"/>
+    <text x="256" y="238" font-family="Arial Black, sans-serif" font-weight="900" font-size="110" fill="#fff" text-anchor="middle">ADW</text>
+    <text x="256" y="340" font-family="Arial, sans-serif" font-weight="700" font-size="52" fill="#fff" text-anchor="middle">TICKETS</text>
+  </svg>
+</template></x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;checkoutEndpoint&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Stripe&quot;},&quot;currency&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;usd&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Stripe&quot;},&quot;serviceFeePercent&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:8,&quot;min&quot;:0,&quot;max&quot;:20,&quot;step&quot;:0.5,&quot;unit&quot;:&quot;%&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Pricing&quot;}}">
+class Component extends DCLogic {
+  state = { qty: {}, step: 'select', attendees: {}, attError: false, showPayload: false, payloadText: '' };
+
+  tierDefs = [
+    { id: 'ga',       cat: 'General',     name: 'General Admission',                       price: 3500, desc: 'Full access to Haunted Takeover™ — music, food trucks, scare zones, vendor market and photo experiences.', theme: 'pink' },
+    { id: 'trunk',    cat: 'Add-On',      name: 'Haunted Trunk',                           price: 5000, desc: 'Reserve a decorated trunk-or-treat space and hand out the frights. Includes one GA entry.', theme: 'orange' },
+    { id: 'ga_mua',   cat: 'Competition', name: 'GA + Makeup Artist Competition',          price: 11000, desc: 'General Admission plus an entry slot in the makeup-artist competition. Compete for cash prizes.', theme: 'green' },
+    { id: 'solo',     cat: 'Competition', name: 'Individual Costume Contest + GA',         price: 6000, desc: 'Solo costume competition entry with General Admission included.', theme: 'purple' },
+    { id: 'grp2',     cat: 'Group',       name: 'Group Costume Contest — 2 People + GA',   price: 9500, desc: 'Duo costume entry with General Admission for both members.', theme: 'blue' },
+    { id: 'grp3',     cat: 'Group',       name: 'Group Costume Contest — 3 People + GA',   price: 13000, desc: 'Three-person group entry with General Admission for all members.', theme: 'blue' },
+    { id: 'grp4',     cat: 'Group',       name: 'Group Costume Contest — 4 People + GA',   price: 16500, desc: 'Four-person group entry with General Admission for all members.', theme: 'blue' },
+    { id: 'grp5',     cat: 'Group',       name: 'Group Costume Contest — 5 People + GA',   price: 20000, desc: 'Five-person group entry with General Admission for all members.', theme: 'blue' },
+    { id: 'grp6',     cat: 'Group',       name: 'Group Costume Contest — 6 People + GA',   price: 23500, desc: 'Six-person group entry with General Admission for all members.', theme: 'blue' },
+  ];
+
+  themeMap = {
+    pink:   { border: 'rgba(254,1,154,.28)', bg: 'linear-gradient(160deg,rgba(254,1,154,.08),rgba(255,255,255,.02))', tagColor: '#FE019A', tagBg: 'rgba(254,1,154,.16)' },
+    purple: { border: 'rgba(105,20,209,.34)', bg: 'linear-gradient(160deg,rgba(105,20,209,.1),rgba(255,255,255,.02))', tagColor: '#b98bff', tagBg: 'rgba(105,20,209,.2)' },
+    blue:   { border: 'rgba(30,167,255,.3)', bg: 'linear-gradient(160deg,rgba(30,167,255,.08),rgba(255,255,255,.02))', tagColor: '#5cc0ff', tagBg: 'rgba(30,167,255,.16)' },
+    green:  { border: 'rgba(57,255,136,.3)', bg: 'linear-gradient(160deg,rgba(57,255,136,.07),rgba(255,255,255,.02))', tagColor: '#39ff88', tagBg: 'rgba(57,255,136,.14)' },
+    orange: { border: 'rgba(255,122,26,.32)', bg: 'linear-gradient(160deg,rgba(255,122,26,.08),rgba(255,255,255,.02))', tagColor: '#ff9d4d', tagBg: 'rgba(255,122,26,.16)' },
+  };
+
+  usd(cents) { return '$' + (cents / 100).toLocaleString('en-US', { minimumFractionDigits: cents % 100 ? 2 : 0, maximumFractionDigits: 2 }); }
+
+  setQty(id, delta) {
+    this.setState((s) => {
+      const q = { ...s.qty };
+      q[id] = Math.max(0, Math.min(50, (q[id] || 0) + delta));
+      if (q[id] === 0) delete q[id];
+      return { qty: q };
+    });
+  }
+
+  setAttendee(id, field, value) {
+    this.setState((s) => ({ attendees: { ...s.attendees, [id]: { ...(s.attendees[id] || {}), [field]: value } }, attError: false }));
+  }
+
+  // One slot per individual ticket purchased.
+  attendeeSlots() {
+    const slots = [];
+    let n = 0;
+    this.tierDefs.forEach((t) => {
+      const q = this.state.qty[t.id] || 0;
+      for (let i = 0; i < q; i++) {
+        n++;
+        const id = t.id + '-' + i;
+        const a = this.state.attendees[id] || {};
+        slots.push({ id, tierName: t.name, num: n, isPrimary: n === 1, name: a.name || '', email: a.email || '', phone: a.phone || '' });
+      }
+    });
+    return slots;
+  }
+
+  attendeesValid() {
+    const slots = this.attendeeSlots();
+    if (!slots.length) return false;
+    return slots.every((s) => s.name.trim().length > 1 && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(s.email.trim()) && s.phone.replace(/\D/g, '').length >= 7);
+  }
+
+  goToDetails() {
+    if (this.attendeeSlots().length === 0) return;
+    this.setState({ step: 'details', attError: false });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  tryComplete() {
+    if (!this.attendeesValid()) { this.setState({ attError: true }); return; }
+    this.checkout();
+  }
+
+  lineItems() {
+    return this.tierDefs
+      .filter((t) => (this.state.qty[t.id] || 0) > 0)
+      .map((t) => ({
+        price_data: { currency: (this.props.currency ?? 'usd'), product_data: { name: t.name }, unit_amount: t.price },
+        quantity: this.state.qty[t.id],
+      }));
+  }
+
+  async checkout() {
+    const items = this.lineItems();
+    if (!items.length) return;
+    const attendees = this.attendeeSlots().map((s) => ({ ticket: s.tierName, name: s.name.trim(), email: s.email.trim(), phone: s.phone.trim() }));
+    const payload = { line_items: items, attendees, event: 'haunted-takeover-2026' };
+    const endpoint = this.props.checkoutEndpoint;
+    // When a Stripe Checkout backend is connected, POST the line items + attendees and redirect
+    // to the returned Session URL. The backend calls stripe.checkout.sessions.create({ line_items }).
+    if (endpoint) {
+      try {
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json();
+        if (data.url) { window.location.assign(data.url); return; }
+      } catch (e) { /* fall through to preview */ }
+    }
+    // No endpoint (or fetch failed): show the payload so it's clear what will be sent.
+    this.setState({ showPayload: true, payloadText: JSON.stringify(payload, null, 2) });
+  }
+
+  renderVals() {
+    const feePct = this.props.serviceFeePercent ?? 6;
+    const tiers = this.tierDefs.map((t) => {
+      const th = this.themeMap[t.theme];
+      const qty = this.state.qty[t.id] || 0;
+      return {
+        cat: t.cat, name: t.name, desc: t.desc, priceLabel: this.usd(t.price), qty,
+        border: th.border, bg: th.bg, tagColor: th.tagColor, tagBg: th.tagBg,
+        qtyColor: qty > 0 ? '#39ff88' : '#5a5870',
+        inc: () => this.setQty(t.id, 1),
+        dec: () => this.setQty(t.id, -1),
+      };
+    });
+    const selected = this.tierDefs.filter((t) => (this.state.qty[t.id] || 0) > 0);
+    const subtotalCents = selected.reduce((s, t) => s + t.price * this.state.qty[t.id], 0);
+    const feeCents = Math.round(subtotalCents * feePct / 100);
+    const lines = selected.map((t) => ({
+      label: t.name + ' × ' + this.state.qty[t.id],
+      amount: this.usd(t.price * this.state.qty[t.id]),
+    }));
+
+    const isDetails = this.state.step === 'details';
+    const err = this.state.attError;
+    const errBorder = '#ff6b9d';
+    const okBorder = 'rgba(255,255,255,.14)';
+    const attendees = this.attendeeSlots().map((s) => ({
+      ...s,
+      onName: (e) => this.setAttendee(s.id, 'name', e.target.value),
+      onEmail: (e) => this.setAttendee(s.id, 'email', e.target.value),
+      onPhone: (e) => this.setAttendee(s.id, 'phone', e.target.value),
+      nameBorder: err && s.name.trim().length <= 1 ? errBorder : okBorder,
+      emailBorder: err && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(s.email.trim()) ? errBorder : okBorder,
+      phoneBorder: err && s.phone.replace(/\D/g, '').length < 7 ? errBorder : okBorder,
+    }));
+
+    // step indicator styling
+    const active = { color: '#fff', bg: 'rgba(254,1,154,.14)', border: 'rgba(254,1,154,.4)', dotBg: 'linear-gradient(90deg,#FE019A,#6914D1)', dotColor: '#fff' };
+    const idle = { color: '#8f8ba0', bg: 'rgba(255,255,255,.03)', border: 'rgba(255,255,255,.1)', dotBg: 'rgba(255,255,255,.1)', dotColor: '#8f8ba0' };
+    const s1 = isDetails ? idle : active;
+    const s2 = isDetails ? active : idle;
+
+    return {
+      tiers, lines, feePct,
+      hasItems: selected.length > 0,
+      isEmpty: selected.length === 0,
+      subtotal: this.usd(subtotalCents),
+      fee: this.usd(feeCents),
+      total: this.usd(subtotalCents + feeCents),
+      isSelectStep: !isDetails,
+      isDetailsStep: isDetails,
+      attendees,
+      attError: err,
+      primaryLabel: isDetails ? 'Complete Purchase' : 'Continue to Attendee Details',
+      primaryAction: isDetails ? () => this.tryComplete() : () => this.goToDetails(),
+      backToSelect: () => this.setState({ step: 'select', attError: false }),
+      step1Color: s1.color, step1Bg: s1.bg, step1Border: s1.border, step1DotBg: s1.dotBg, step1DotColor: s1.dotColor,
+      step2Color: s2.color, step2Bg: s2.bg, step2Border: s2.border, step2DotBg: s2.dotBg, step2DotColor: s2.dotColor,
+      showPayload: this.state.showPayload,
+      payloadText: this.state.payloadText,
+      checkout: () => this.checkout(),
+      closePayload: () => this.setState({ showPayload: false }),
+    };
+  }
+}
+</script>
+</body>
+</html>
